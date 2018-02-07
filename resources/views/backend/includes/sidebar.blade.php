@@ -36,6 +36,51 @@
                     <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
                 </a>
             </li>
+            <li class="{{ Active::pattern('admin/commune') }}">
+                <a href="{{ route('admin.commune') }}">
+                    <i class="fa fa-dashboard"></i>
+                    គ្រប់គ្រងឃុំសង្កាត់
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                </a>
+            </li>
+            <li class="{{ Active::pattern('admin/citizen') }}">
+                <a href="{{ route('admin.citizen') }}">
+                    <i class="fa fa-dashboard"></i>
+                    គ្រប់គ្រងអត្រានុកូលដ្ឋាន
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                </a>
+            </li>
+            <li class="{{ Active::pattern('admin/lettertype') }}">
+                <a href="{{ route('admin.lettertype') }}">
+                    <i class="fa fa-dashboard"></i>
+                    គ្រប់គ្រងប្រភេតសំបុត្រ
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                </a>
+            </li>
+            <li class="{{ Active::pattern('admin/gender') }}">
+                <a href="{{ route('admin.gender') }}">
+                    <i class="fa fa-dashboard"></i>
+                    គ្រប់គ្រងភេទ
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                </a>
+            </li>
+            {{--<li class="{{ Active::pattern('admin/type') }}">--}}
+                {{--<a href="{{ route('admin.type') }}">--}}
+                    {{--<i class="fa fa-dashboard"></i>--}}
+                    {{--គ្រប់គ្រងសំបុត្រ--}}
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+
+            <li class="{{ Active::pattern('admin/image') }}">
+                <a href="{{ route('admin.image') }}">
+                    <i class="fa fa-dashboard"></i>
+                    គ្រប់គ្រងរូបភាព
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                </a>
+            </li>
+
+
 
             @permissions(['manage-users', 'manage-roles'])
                 <li class="{{ Active::pattern('admin/access/*') }} treeview">
@@ -50,7 +95,9 @@
                             <li class="{{ Active::pattern('admin/access/user*') }}">
                                 <a href="{{ route('admin.access.user.index') }}">
                                     <i class="fa fa-circle-o"></i>
-                                    <span>{{ trans('labels.backend.access.users.management') }}</span>
+                                    ការគ្រប់គ្រងអ្នកប្រើប្រាស់
+
+                                    {{--<span>{{ trans('labels.backend.access.users.management') }}</span>--}}
                                 </a>
                             </li>
                         @endauth
@@ -59,7 +106,8 @@
                             <li class="{{ Active::pattern('admin/access/role*') }}">
                                 <a href="{{ route('admin.access.role.index') }}">
                                     <i class="fa fa-circle-o"></i>
-                                    <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                                    ការគ្រប់គ្រងតួននាទី
+                                    {{--<span>{{ trans('labels.backend.access.roles.management') }}</span>--}}
                                 </a>
                             </li>
                         @endauth
