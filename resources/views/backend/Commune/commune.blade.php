@@ -71,7 +71,7 @@
                 columns: [
                     {data: 'number', name: 'number'},
                     {data: 'name', name: 'name', sortable: false},
-                    {data: 'actions', name: 'actions', sortable: false}
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
