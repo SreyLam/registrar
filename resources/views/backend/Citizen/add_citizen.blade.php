@@ -28,7 +28,7 @@
                                     <div class="col-md-6">
                                         {{Form::hidden('id', @$citizen->id, ['class'=>'form-control'])}}
                                         <label>លេខឃុំ</label>
-                                        <select name="commune_id" id="id" class="form-control">
+                                        <select name="commune_id" id="number" class="form-control">
                                         @foreach($communes as $commune)
                                         <option value="{{ $commune->id }}">{{ $commune->name }}</option>
                                         @endforeach
@@ -46,7 +46,7 @@
                                         <div class="clearfix">&nbsp;</div>
 
                                         <label>លេខប្រភេទសំបុត្រ</label>
-                                        <select name="lettertype_id" id="id" class="form-control">
+                                        <select name="lettertype_id" id="number" class="form-control">
                                             @foreach($letterypes as $letterype)
                                                 <option value="{{ $letterype->id }}">{{ $letterype->name }}</option>
                                             @endforeach
@@ -100,6 +100,12 @@
 
                                                 <div class="col-md-6">
                                                     {{Form::label('year', 'ធ្វើនៅឆ្នាំណា')}}
+                                                    {{--<div class='input-group date' id='datetimepicker9'>--}}
+                                                        {{--<input type='text' class="form-control" />--}}
+                                                        {{--<span class="input-group-addon">--}}
+                                                            {{--<span class="glyphicon glyphicon-calendar"></span>--}}
+                                                        {{--</span>--}}
+                                                    {{--</div>--}}
                                                     {{Form::text('year', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy'])}}
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
@@ -164,6 +170,13 @@
         $(function () {
             $('#datetimepicker1').datetimepicker({
                 locale: 'km'
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker9').datetimepicker({
+                viewMode: 'years'
             });
         });
     </script>

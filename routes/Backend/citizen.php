@@ -9,6 +9,6 @@ Route::get('/citizen', 'CitizenController@getList_citizen')->name('citizen');
 Route::get('/add_citizen', 'CitizenController@getCitizen');
 Route::post('/add-citizen', 'CitizenController@storeCitizen');
 Route::get('/delete_citizen','CitizenController@getDelete');
-//Route::get('/edit_comm/{id}','CitizenController@getEdit_comm')->name('commune.datatable');
-//Route::put('/post_editcomm/{id}','CitizenController@postStore_comm');
+Route::get('citizens/{id}/edit_citizen','CitizenController@getEdit_citizen')->name('citizen.datatable');
+Route::put('/post_editcitizen/{id}','CitizenController@postStore_citizen');
 Route::post('/get_citizen_datatable','CitizenController@getCitizenDatatable')->name('citizen.datatable');

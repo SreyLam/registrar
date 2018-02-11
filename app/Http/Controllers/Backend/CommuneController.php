@@ -58,6 +58,7 @@ class CommuneController extends Controller
     public function getList_comm()
     {
         $commune = DB::table('communes')->get();
+//        dd($commune);
         return view('backend.Commune.commune', compact('commune'));
     }
     public function getDelete()

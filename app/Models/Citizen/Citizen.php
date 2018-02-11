@@ -6,7 +6,8 @@ use App\Models\Lettertype\Lettertype;
 use Illuminate\Database\Eloquent\Model;
 
 class Citizen extends Model
-{ public function commune(){
+{
+    public function commune(){
         return $this->belongsTo(Commune::class);
     }
     public function lettertype(){

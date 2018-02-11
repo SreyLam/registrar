@@ -15,10 +15,10 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ឃុំសង្កាត់') }}​!</h3>
+            <h3 class="box-title">{{ trans('ប្រជាជន') }}​!</h3>
             <div class="box-tools pull-right">
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
-                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលឃុំសង្កាត់</a>
+                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលពត៍មានប្រជាជន</a>
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
@@ -27,22 +27,22 @@
 
                 <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                     <thead style="">
-                    <th>លេខឃុំ</th>
-                    <th>លេខបញ្ជី</th>
-                    <th>លេខសៀវភៅ</th>
-                    <th>លេខប្រភេទសំបុត្រ</th>
-                    <th>ធ្វើនៅឆ្នាំណា</th>
-                    <th>ឈ្មេាះ</th>
-                    <th>កូនទីប៉ិន្មាន</th>
-                    <th>ភេទ</th>
-                    <th>ថ្ងៃខែឆ្នាំកំនើត</th>
-                    <th>ឈ្មេាះឲពុក</th>
-                    <th>ឈ្មេាះម្ដាយ</th>
-                    <th>ទីកន្លែងកំនើត</th>
-                    <th>ទីកន្លែងកំនើតឲពុក</th>
-                    <th>ទីកន្លែងកំនើតម្ដាយ</th>
-                    <th>ពត័រមានផ្សេង</th>
-                    <th>សកម្មភាព</th>
+                        <th>លេខឃុំ</th>
+                        <th>លេខបញ្ជី</th>
+                        <th>លេខសៀវភៅ</th>
+                        <th>លេខប្រភេទសំបុត្រ</th>
+                        <th>ឈ្មេាះ</th>
+                        <th>ឈ្មេាះឲពុក</th>
+                        <th>ឈ្មេាះម្ដាយ</th>
+                        <th>ថ្ងៃខែឆ្នាំកំនើត</th>
+                        <th>កូនទីប៉ិន្មាន</th>
+                        <th>ភេទ</th>
+                        <th>ធ្វើនៅឆ្នាំណា</th>
+                        <th>ទីកន្លែងកំនើត</th>
+                        <th>ទីកន្លែងកំនើតឲពុក</th>
+                        <th>ទីកន្លែងកំនើតម្ដាយ</th>
+                        <th>ពត័រមានផ្សេង</th>
+                        <th>សកម្មភាព</th>
                     </thead>
 
                 </table>
@@ -84,20 +84,20 @@
                 columns: [
                     {data: 'commune_id', name: 'commune_id'},
                     {data: 'number_list', name: 'number_list'},
-                    {data: 'book_list', name: 'book_list'},
+                    {data: 'number_book', name: 'number_book'},
                     {data: 'lettertype_id', name: 'lettertype_id'},
-                    {data: 'year', name: 'year', sortable: false},
                     {data: 'name', name: 'name', sortable: false},
-                    {data: 'child_order', name: 'child_order'},
-                    {data: 'gender', name: 'gender', sortable: false},
-                    {data: 'date_birth', name: 'date_birth', sortable: false},
                     {data: 'father_name', name: 'father_name', sortable: false},
                     {data: 'mother_name', name: 'mother_name', sortable: false},
+                    {data: 'date_birth', name: 'date_birth', sortable: false},
+                    {data: 'child_order', name: 'child_order'},
+                    {data: 'gender', name: 'gender', sortable: false},
+                    {data: 'year', name: 'year', sortable: false},
                     {data: 'pleace_birth', name: 'pleace_birth', sortable: false},
                     {data: 'father_birth', name: 'father_birth', sortable: false},
                     {data: 'mother_birth', name: 'mother_birth', sortable: false},
                     {data: 'other', name: 'other', sortable: false},
-                    {data: 'actions', name: 'actions', sortable: false}
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
@@ -139,4 +139,5 @@
         });
 
     </script>
+
 @endsection
