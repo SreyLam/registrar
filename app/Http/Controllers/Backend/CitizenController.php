@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Citizen\Citizen;
 use App\Models\Commune\Commune;
 use App\Models\Gender\Gender;
+use App\Models\Image\Image;
 use App\Models\Lettertype\Lettertype;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
@@ -23,17 +24,16 @@ class CitizenController extends Controller
         $communes = Commune::all();
         $letterypes = Lettertype::all();
         $genders = Gender::all();
-//        $date = new Carbon();
+        $images = Image::all();
+        $years = new Carbon();
 
-        return view('backend.Citizen.add_citizen', compact('communes','letterypes','genders'));
+        return view('backend.Citizen.add_citizen', compact('communes','letterypes','genders','years','images'));
 
     }
 
     public function getCitizenDatatable(){
-        $citizens = Citizen::select('commune_id','number_list','number_book','lettertype_id','name','father_name','mother_name','date_birth','child_order','gender',
-            'year','pleace_birth','father_birth','mother_birth','other','id')->with('commune','lettertype');
-//        echo \GuzzleHttp\json_encode($citizens);
-//        die();
+        $citizens = Citizen::with('commune','lettertype', 'gender_cityzen')->get();
+
 
         return Datatables::of($citizens)
             ->editColumn('commune_id', function ($citizen){
@@ -41,6 +41,9 @@ class CitizenController extends Controller
             })
             ->editColumn('lettertype_id', function ($citizen){
                 return $citizen->lettertype->number;
+            })
+            ->editColumn('gender_id', function ($citizen){
+                return $citizen->gender_cityzen->gender_name;
             })
 
             ->addColumn('actions', function ($citizen){
@@ -72,13 +75,33 @@ class CitizenController extends Controller
         $newCitzen->child_order = \request()->child_order;
         $newCitzen->gender = \request()->gender;
         $newCitzen->year = \request()->year;
-        $newCitzen->pleace_birth = \request()->pleace_birth;
-        $newCitzen->father_birth = \request()->father_birth;
-        $newCitzen->mother_birth = \request()->mother_birth;
+        $newCitzen->place_birth = \request()->place_birth;
+        $newCitzen->f_place_birth = \request()->f_place_birth;
+        $newCitzen->m_place_birth = \request()->m_place_birth;
         $newCitzen->other = \request()->other;
         $newCitzen->created_at = Carbon::now();
         $newCitzen->updated_at = Carbon::now();
-        $newCitzen->save();
+
+        if($newCitzen->save()){
+            if (\request()->hasFile('citizen_image')) {
+                $newImage = new Image();
+                $newImage->imageable_id = $newCitzen->id;
+                $newImage->imageable_type = Citizen::class;
+
+                $file = Input::file('citizen_image');
+                $destinationPath = public_path('img/backend/citizen');
+                $filename = time().''.'.'.$file->getClientOriginalExtension();
+
+                $file->move($destinationPath, $filename);
+
+                $newImage->image_src = $filename;
+
+                //dd($newImage);
+
+                $newImage->saveOrFail();
+            }
+        }
+
         return redirect('/admin/citizen');
 
     }
@@ -91,6 +114,7 @@ class CitizenController extends Controller
 //        dd($citizen);
         return view('backend.Citizen.citizen', compact('citizen'));
     }
+
     public function getDelete()
     {
         $citizen = DB::table('citizens')->where('id', \request('citizen_id'))->delete();
@@ -102,10 +126,12 @@ class CitizenController extends Controller
     }
     public function getEdit_citizen($id)
     {
-//        dd($id);
+        $communes = Commune::all();
+        $lettertypes = Lettertype::all();
+        $genders = Gender::all();
         $citizen = Citizen::where('id', $id)->first();
 
-        return View::make('backend.Citizen.edit_citizen', compact('citizen'));
+        return View::make('backend.Citizen.edit_citizen', compact('citizen', 'communes','lettertypes','genders'));
     }
 
     public function postStore_citizen($id)
@@ -125,9 +151,9 @@ class CitizenController extends Controller
             'child_order'  => $input['child_order'],
             'gender'  => $input['gender'],
             'year'  => $input['year'],
-            'pleace_birth'  => $input['pleace_birth'],
-            'father_birth'  => $input['father_birth'],
-            'mother_birth'  => $input['mother_birth'],
+            'place_birth'  => $input['place_birth'],
+            'f_place_birth'  => $input['f_place_birth'],
+            'm_place_birth'  => $input['m_place_birth'],
             'other'  => $input['other'],
 
         ));
@@ -146,11 +172,11 @@ class CitizenController extends Controller
             'mother_name'  => $input['mother_name'],
             'date_birth'  => $input['date_birth'],
             'child_order'  => $input['child_order'],
-            'gender'  => $input['gender'],
+            'gender_id'  => $input['gender_id'],
             'year'  => $input['year'],
-            'pleace_birth'  => $input['pleace_birth'],
-            'father_birth'  => $input['father_birth'],
-            'mother_birth'  => $input['mother_birth'],
+            'place_birth'  => $input['place_birth'],
+            'f_place_birth'  => $input['f_place_birth'],
+            'm_place_birth'  => $input['m_place_birth'],
             'other'  => $input['other'],
         ));
         if($citizen){

@@ -23,7 +23,7 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            <div class="table-responsive">
+            <div class="table-responsive"></div></dr>
 
                 <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                     <thead style="">
@@ -91,11 +91,11 @@
                     {data: 'mother_name', name: 'mother_name', sortable: false},
                     {data: 'date_birth', name: 'date_birth', sortable: false},
                     {data: 'child_order', name: 'child_order'},
-                    {data: 'gender', name: 'gender', sortable: false},
+                    {data: 'gender_id', name: 'gender', sortable: false},
                     {data: 'year', name: 'year', sortable: false},
-                    {data: 'pleace_birth', name: 'pleace_birth', sortable: false},
-                    {data: 'father_birth', name: 'father_birth', sortable: false},
-                    {data: 'mother_birth', name: 'mother_birth', sortable: false},
+                    {data: 'place_birth', name: 'place_birth', sortable: false},
+                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
+                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
                     {data: 'other', name: 'other', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],

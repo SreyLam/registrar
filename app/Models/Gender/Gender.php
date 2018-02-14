@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gender extends Model
 {
-    public function citizen(){
+    public function citizens(){
         return $this->hasOne(Citizen::class);
     }
 }

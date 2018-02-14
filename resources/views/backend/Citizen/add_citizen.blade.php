@@ -72,14 +72,14 @@
                                             <div class="row"  style="margin-left: 0px;">
                                                 <div class="col-md-6">
                                                     {{Form::label('date_birth', 'ថ្ងៃខែឆ្នាំកំនើត')}}
-                                                    {{--<div class='input-group date' id='datetimepicker1'>--}}
-                                                        {{--<input type='text' class="form-control" />--}}
-                                                        {{--<span class="input-group-addon">--}}
-                                                            {{--<span class="glyphicon glyphicon-calendar"></span>--}}
-                                                        {{--</span>--}}
-                                                    {{--</div>--}}
-                                                    {{Form::text('date_birth', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}
-                                                    <div class="clearfix">&nbsp;</div>
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <input class="form-control" name="date_birth" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    {{--{{Form::text('date_birth', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}--}}
+                                                    {{--<div class="clearfix">&nbsp;</div>--}}
                                                 </div>
                                                 <div class="col-md-6">
                                                     {{Form::label('child_order', 'កូនទីប៉ុន្មាន')}}
@@ -87,7 +87,7 @@
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>ភេទអ្វី</label>
+                                                    <label>ភេទ</label>
                                                     <select name="gender" id="id" class="form-control">
                                                         @foreach($genders as $gender)
                                                             <option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
@@ -99,15 +99,22 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    {{Form::label('year', 'ធ្វើនៅឆ្នាំណា')}}
-                                                    {{--<div class='input-group date' id='datetimepicker9'>--}}
-                                                        {{--<input type='text' class="form-control" />--}}
-                                                        {{--<span class="input-group-addon">--}}
-                                                            {{--<span class="glyphicon glyphicon-calendar"></span>--}}
-                                                        {{--</span>--}}
-                                                    {{--</div>--}}
-                                                    {{Form::text('year', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy'])}}
-                                                    <div class="clearfix">&nbsp;</div>
+                                                    {{Form::label('years', 'ធ្វើនៅឆ្នាំណា')}}
+                                                    <div class='input-group date' id='datetimepicker10'>
+                                                        <input type='years' class="form-control" name="year"/>
+                                                        <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                    {{--{{Form::text('year', '', ['class'=>'input-group date' id='datetimepicker10', 'required',id='datetimepicker10', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy'])}}--}}
+                                                    {{--<div class="clearfix">&nbsp;</div>--}}
+                                                </div>
+
+                                                <div class=" col-md-6">
+                                                    {{Form::label('image','បញ្ជូលរូបភាព')}}
+                                                    <img src="{{URL::to('/')}}/img/5.jpg" alt="image" class="img-thumbnail" width="100%" height="100%" />
+                                                    {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;', 'accept' => 'image/*', 'name' => 'citizen_image'])}}
+
                                                 </div>
 
 
@@ -118,16 +125,16 @@
                                         <div class="col-md-6">
 
 
-                                        {{Form::label('pleace_birth', 'ទីកន្លែងកំនើត')}}
-                                        {{Form::textarea('pleace_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើត !', 'id'=>'inputTextArea'])}}
+                                        {{Form::label('place_birth', 'ទីកន្លែងកំនើត')}}
+                                        {{Form::textarea('place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើត !', 'id'=>'inputTextArea'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('father_birth', 'ទីកន្លែងកំនើតឲពុក')}}
-                                        {{Form::textarea('father_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតឲពុក !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('f_place_birth', 'ទីកន្លែងកំនើតឲពុក')}}
+                                        {{Form::textarea('f_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតឲពុក !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('mother_birth', 'ទីកន្លែងកំនើតម្ដាយ')}}
-                                        {{Form::textarea('mother_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតម្ដាយ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('m_place_birth', 'ទីកន្លែងកំនើតម្ដាយ')}}
+                                        {{Form::textarea('m_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតម្ដាយ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('other', 'ពត័រមានផ្សេង')}}
@@ -169,15 +176,39 @@
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker1').datetimepicker({
-                locale: 'km'
+                locale: 'km',
+                format: 'YYYY-MM-DD'
+            });
+
+            $('#datetimepicker10').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY'
             });
         });
-    </script>
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker9').datetimepicker({
-                viewMode: 'years'
+
+        /* click finde image*/
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.img-thumbnail').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#filechoose").change(function () {
+            readURL(this);
+        });
+
+        $(function(){
+            $(".img-thumbnail").click(function(){
+                $("#filechoose").trigger('click');
             });
         });
+
     </script>
 @endsection

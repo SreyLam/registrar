@@ -23,16 +23,16 @@
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-md-12" style="margin:auto; background-color: #FFFFFF; width:100%">
-                                        {{Form::open(['url'=>'admin/post_editlettertype/'.$lettertype->id, 'method'=>'put' , 'files'=>true, 'enctype'=>'multipart/form-data'])}}
+                                        {{Form::open(['url'=>'admin/post_editlettertype/'.$lettertypes->id, 'method'=>'put' , 'files'=>true, 'enctype'=>'multipart/form-data'])}}
                                         {{--Left Form--}}
                                         <div class="col-md-6">
-                                            {{Form::hidden('id', @$lettertype->id, ['class'=>'form-control'])}}
+                                            {{Form::hidden('id', @$lettertypes->id, ['class'=>'form-control'])}}
 
                                             {{Form::label('number', 'លេខប្រភេទសំបុត្រ')}}
-                                            {{Form::text('number', $lettertype->number, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះសំបុត្រ !', 'id'=>'inputTextBox'])}}
+                                            {{Form::text('number', $lettertypes->number, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះសំបុត្រ !', 'id'=>'inputTextBox'])}}
                                             <div class="clearfix">&nbsp;</div>
                                             {{Form::label('name', 'សំបុត្រ')}}
-                                            {{Form::text('name', $lettertype->name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះសំបុត្រ !', 'id'=>'inputTextBox'])}}
+                                            {{Form::text('name', $lettertypes->name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះសំបុត្រ !', 'id'=>'inputTextBox'])}}
                                             <div class="clearfix">&nbsp;</div>
 
                                         </div>

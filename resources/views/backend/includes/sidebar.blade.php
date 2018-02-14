@@ -72,13 +72,13 @@
                 {{--</a>--}}
             {{--</li>--}}
 
-            <li class="{{ Active::pattern('admin/image') }}">
-                <a href="{{ route('admin.image') }}">
-                    <i class="fa fa-dashboard"></i>
-                    គ្រប់គ្រងរូបភាព
+            {{--<li class="{{ Active::pattern('admin/image') }}">--}}
+                {{--<a href="{{ route('admin.image') }}">--}}
+                    {{--<i class="fa fa-dashboard"></i>--}}
+                    {{--គ្រប់គ្រងរូបភាព--}}
                     {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
-                </a>
-            </li>
+                {{--</a>--}}
+            {{--</li>--}}
 
 
 

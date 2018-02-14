@@ -48,9 +48,9 @@ class LetterTypeController extends Controller
     }
     public function getEdit_lettertype($id)
     {
-        $lettertype = Lettertypes::where('id', $id)->first();
+        $lettertypes = Lettertype::where('id', $id)->first();
 //        dd($commune);
-        return View::make('backend.Lettertype.edit_lettertype', compact('lettertype'));
+        return View::make('backend.Lettertype.edit_lettertype', compact('lettertypes'));
     }
 
     public function postStore_lettertype($id)

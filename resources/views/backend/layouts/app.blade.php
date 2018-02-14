@@ -25,9 +25,6 @@
             {{ Html::style(elixir('css/backend.css')) }}
         @endif
 
-        <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" />
-
         @yield('after-styles')
 
         <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->

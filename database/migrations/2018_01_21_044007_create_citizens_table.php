@@ -24,13 +24,13 @@ class CreateCitizensTable extends Migration
             $table->string('name');
             $table->string('father_name');
             $table->string('mother_name');
-            $table->string('date_birth');
+            $table->dateTime('date_birth');
             $table->string('child_order');
             $table->string('gender');
-            $table->dateTime('year');
-            $table->string('pleace_birth');
-            $table->string('father_birth');
-            $table->string('mother_birth');
+            $table->string('year');
+            $table->string('place_birth');
+            $table->string('f_place_birth');
+            $table->string('m_place_birth');
             $table->string('other');
             $table->timestamps();
         });

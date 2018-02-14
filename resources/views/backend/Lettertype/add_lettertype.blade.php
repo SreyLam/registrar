@@ -32,12 +32,7 @@
                                         {{Form::label('number', 'លេខប្រភេទសំបុត្រ')}}
                                         {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈលេខសំបុត្រ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
-                                        {{--<label>ឈ្មេាះសំបុត្រ</label>--}}
-                                        {{--<select name="type_id" id="id" class="form-control">--}}
-                                            {{--@foreach($types as $type)--}}
-                                                {{--<option value="{{ $type->id }}">{{ $type->name }}</option>--}}
-                                            {{--@endforeach--}}
-                                        {{--</select>--}}
+
                                         {{Form::label('name', 'ឈ្មេាះសំបុត្រ')}}
                                         {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមជ្រើសរើសឈ្មេាះមេសំបុត្រ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
