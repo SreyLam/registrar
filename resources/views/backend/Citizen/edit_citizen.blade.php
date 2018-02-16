@@ -90,9 +90,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     {{Form::label('gender', 'ភេទ')}}
-                                                    <select name="lettertype_id" id="number" class="form-control">
+                                                    <select name="gender" id="id" class="form-control">
                                                         @foreach($genders as $gender)
-                                                            @if($gender->id == $citizen->gender_id)
+                                                            @if($gender->id == $citizen->id)
                                                                 <option selected value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
                                                                 @continue
                                                             @endif
@@ -100,9 +100,6 @@
                                                         @endforeach
                                                     </select>
 
-
-                                                    {{--{{Form::text('gender',$citizen->gender , ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}--}}
-                                                    {{--<div class="clearfix">&nbsp;</div>--}}
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -165,18 +162,18 @@
     </div><!--box box-success-->
 @endsection
 
-@section('after-scripts')
-    <script type="text/javascript" src="{{ asset('node_modules/moment/locale/km.js') }}"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker({
-                locale: 'km',
-                format: 'YYYY-MM-DD'
-            });
+{{--@section('after-scripts')--}}
+    {{--<script type="text/javascript" src="{{ asset('node_modules/moment/locale/km.js') }}"></script>--}}
+    {{--<script type="text/javascript">--}}
+        {{--$(function () {--}}
+            {{--$('#datetimepicker1').datetimepicker({--}}
+                {{--locale: 'km',--}}
+                {{--format: 'YYYY-MM-DD'--}}
+            {{--});--}}
 
-            $('#datetimepicker10').datetimepicker({
-                viewMode: 'years',
-                format: 'YYYY'
-            });
-        });
-@endsection
+            {{--$('#datetimepicker10').datetimepicker({--}}
+                {{--viewMode: 'years',--}}
+                {{--format: 'MM/YYYY'--}}
+            {{--});--}}
+        {{--});--}}
+{{--@endsection--}}

@@ -42,6 +42,7 @@
                         <th>ទីកន្លែងកំនើតឲពុក</th>
                         <th>ទីកន្លែងកំនើតម្ដាយ</th>
                         <th>ពត័រមានផ្សេង</th>
+                        {{--<th>រូបភាព</th>--}}
                         <th>សកម្មភាព</th>
                     </thead>
 
@@ -97,6 +98,7 @@
                     {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
                     {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
                     {data: 'other', name: 'other', sortable: false},
+//                    {data: 'image', name: 'image', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

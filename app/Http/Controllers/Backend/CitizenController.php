@@ -155,8 +155,29 @@ class CitizenController extends Controller
             'f_place_birth'  => $input['f_place_birth'],
             'm_place_birth'  => $input['m_place_birth'],
             'other'  => $input['other'],
-
         ));
+
+////                if($input->save()){
+//                    if (Input::hasFilehasFile('citizen_image')) {
+////                        $newImage = new Image();
+////                        $newImage->imageable_id = $newCitzen->id;
+////                        $newImage->imageable_type = Citizen::class;
+//
+//                        $file = Input::file('citizen_image');
+//                        $destinationPath = public_path('img/backend/citizen');
+//                        $filename = time().''.'.'.$file->getClientOriginalExtension();
+//
+//                        $file->move($destinationPath, $filename);
+//
+////                        $newImage->image_src = $filename;
+//
+//                        //dd($newImage);
+//
+////                        $newImage->saveOrFail();
+//                    }
+
+
+
         if($citizen){
             return Redirect::to('admin/citizen')->withSuccess('Update Successfully');
         }else{
