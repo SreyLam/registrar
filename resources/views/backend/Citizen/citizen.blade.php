@@ -18,12 +18,14 @@
             <h3 class="box-title">{{ trans('ប្រជាជន') }}​!</h3>
             <div class="box-tools pull-right">
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
-                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលពត៍មានប្រជាជន</a>
+                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:15%"><i class="fa fa-plus"></i> បញ្ជូលពត៍មានប្រជាជន</a>
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
+
             <div class="table-responsive"></div></dr>
+            <a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលនិងទាញយកទិន្ន័យ</a></dr>
 
                 <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                     <thead style="">

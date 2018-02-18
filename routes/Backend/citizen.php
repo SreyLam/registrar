@@ -12,3 +12,7 @@ Route::get('/delete_citizen','CitizenController@getDelete');
 Route::get('citizens/{id}/edit_citizen','CitizenController@getEdit_citizen')->name('citizen.datatable');
 Route::put('/post_editcitizen/{id}','CitizenController@postStore_citizen');
 Route::post('/get_citizen_datatable','CitizenController@getCitizenDatatable')->name('citizen.datatable');
+
+Route::get('/import_citizen', 'CitizenController@getImport_citizen');
+Route::get('downloadExcel/{type}', 'CitizenController@downloadExcel');
+Route::post('importExcel', 'CitizenController@importExcel');

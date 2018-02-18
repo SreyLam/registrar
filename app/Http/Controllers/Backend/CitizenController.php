@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use View;
 use DB;
+use Excel;
 use Illuminate\Support\Facades\Input;
 use Yajra\Datatables\Facades\Datatables;
 
@@ -206,5 +207,73 @@ class CitizenController extends Controller
             return Redirect::back()->withError('Update Unsuccessfully');
         }
     }
+
+    public function getImport_citizen()
+    {
+        return view('backend.Citizen.import_citizen');
+    }
+    /**
+     * File Export Code
+     *
+     * @var array
+     */
+    public function downloadExcel(Request $request, $type)
+    {
+        $data = Citizen::get()->toArray();
+        return Excel::create('itsolutionstuff_example', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+                $sheet->fromArray($data);
+            });
+        })->download($type);
+    }
+
+
+    public function importExcel(Request $request)
+    {
+
+
+        if($request->hasFile('import_file')){
+            $path = $request->file('import_file')->getRealPath();
+
+
+            $data = Excel::load($path, function($reader) {})->get();
+
+
+            if(!empty($data) && $data->count()){
+
+
+                foreach ($data->toArray() as $key => $value) {
+                    if(!empty($value)){
+
+                        foreach ($value as $v) {
+//                            dd($value);
+                            $insert[] = ['commune_id' => $v['commune_id'], 'number_list' => $v['number_list'], 'number_book' => $v['number_book'], 'lettertype_id' => $v['lettertype_id']
+                                , 'name' => $v['name'], 'father_name' => $v['father_name'], 'mother_name' => $v['mother_name'], 'date_birth' => $v['date_birth']
+                                , 'child_order' => $v['child_order'], 'gender' => $v['gender'], 'year' => $v['year'], 'place_birth' => $v['place_birth'], 'f_place_birth' => $v['f_place_birth']
+                                , 'm_place_birth' => $v['m_place_birth'], 'other' => $v['other']];
+                        }
+                    }
+                }
+
+
+                if(!empty($insert)){
+                    Citizen::insert($insert);
+                    return back()->with('success','Insert Record successfully.');
+                }
+
+
+            }
+
+
+        }
+
+
+        return back()->with('error','Please Check your file, Something is wrong there.');
+    }
+
+
+
+
 
 }
