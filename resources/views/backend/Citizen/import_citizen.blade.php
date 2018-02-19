@@ -47,16 +47,16 @@
                                             <br/>
 
 
-                                            <button class="btn btn-primary">Import CSV or Excel File</button>
+                                            <button class="btn btn-success">Import CSV or Excel File</button>
 
 
                                         </form>
                                         <br/>
-                                        <h3>Export File From Database:</h3>
-                                        <div style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px;">
-                                            <a href="{{ url('admin/downloadExcel/xls') }}"><button class="btn btn-success btn-lg">Download Excel xls</button></a>
-                                            <a href="{{ url('admin/downloadExcel/xlsx') }}"><button class="btn btn-success btn-lg">Download Excel xlsx</button></a>
-                                            <a href="{{ url('admin/downloadExcel/csv') }}"><button class="btn btn-success btn-lg">Download CSV</button></a>
+                                        {{--<h3>Export File From Database:</h3>--}}
+                                        {{--<div style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px;">--}}
+                                            {{--<a href="{{ url('admin/downloadExcel/xls') }}"><button class="btn btn-success ">Download Excel xls</button></a>--}}
+                                            {{--<a href="{{ url('admin/downloadExcel/xlsx') }}"><button class="btn btn-success ">Download Excel xlsx</button></a>--}}
+                                            {{--<a href="{{ url('admin/downloadExcel/csv') }}"><button class="btn btn-success ">Download CSV</button></a>--}}
                                 </div>
                             </div>
                         </div>

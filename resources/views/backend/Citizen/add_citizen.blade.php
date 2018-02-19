@@ -1,6 +1,12 @@
 
 @extends('backend.layouts.app')
 
+@section('after-styles')
+
+    <link rel="stylesheet" href="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+
+@endsection
+
 @section('page-header')
     <h1>
         {{ app_name() }}
@@ -100,12 +106,21 @@
 
                                                 <div class="col-md-6">
                                                     {{Form::label('years', 'ធ្វើនៅឆ្នាំណា')}}
-                                                    <div class='input-group date' id='datetimepicker10'>
-                                                        <input type='years' class="form-control" name="year"/>
-                                                        <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
+
+                                                        <div class='input-group date' id='datetimepicker9'>
+                                                            <input type='text' class="form-control" />
+                                                            <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
                                                         </span>
-                                                    </div>
+                                                        </div>
+
+                                                    {{--<div class='input-group date' id='datetimepicker10'>--}}
+                                                        {{--<input type='years' class="form-control" name="year"/>--}}
+                                                        {{--<span class="input-group-addon">--}}
+                                                        {{--<span class="glyphicon glyphicon-calendar"></span>--}}
+                                                        {{--</span>--}}
+                                                    {{--</div>--}}
                                                     {{--{{Form::text('year', '', ['class'=>'input-group date' id='datetimepicker10', 'required',id='datetimepicker10', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy'])}}--}}
                                                     {{--<div class="clearfix">&nbsp;</div>--}}
                                                 </div>
@@ -172,6 +187,8 @@
 @endsection
 
 @section('after-scripts')
+    <script type="text/javascript" src="{{ asset('node_modules/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('node_modules/moment/locale/km.js') }}"></script>
     <script type="text/javascript">
         $(function () {
@@ -180,7 +197,7 @@
                 format: 'YYYY-MM-DD'
             });
 
-            $('#datetimepicker10').datetimepicker({
+            $('#datetimepicker9').datetimepicker({
                 viewMode: 'years',
                 format: 'YYYY'
             });

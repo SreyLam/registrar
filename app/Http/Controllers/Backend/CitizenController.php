@@ -157,9 +157,10 @@ class CitizenController extends Controller
             'm_place_birth'  => $input['m_place_birth'],
             'other'  => $input['other'],
         ));
-
+//
 ////                if($input->save()){
 //                    if (Input::hasFilehasFile('citizen_image')) {
+//                        $image = DB::table(images)->where()
 ////                        $newImage = new Image();
 ////                        $newImage->imageable_id = $newCitzen->id;
 ////                        $newImage->imageable_type = Citizen::class;
@@ -237,7 +238,18 @@ class CitizenController extends Controller
             $path = $request->file('import_file')->getRealPath();
 
 
-            $data = Excel::load($path, function($reader) {})->get();
+            $data = Excel::batch('app/storage/uploads', function($rows, $file) {
+
+                // Explain the reader how it should interpret each row,
+                // for every file inside the batch
+                $rows->each(function($row) {
+
+                    // Example: dump the firstname
+                    dd($row->firstname);
+
+                });
+
+            });
 
 
             if(!empty($data) && $data->count()){

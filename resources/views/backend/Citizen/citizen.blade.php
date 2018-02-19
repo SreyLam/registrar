@@ -17,15 +17,18 @@
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('ប្រជាជន') }}​!</h3>
             <div class="box-tools pull-right">
+
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
-                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:15%"><i class="fa fa-plus"></i> បញ្ជូលពត៍មានប្រជាជន</a>
+                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:10%"><i class="fa fa-plus"></i> បញ្ជូលពត៍មានប្រជាជន</a>
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <dr class="box-body">
 
             <div class="table-responsive"></div></dr>
-            <a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលនិងទាញយកទិន្ន័យ</a></dr>
+            <a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a></dr>
+            <a href="{{ url('admin/downloadExcel/xls') }}" class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xls</a></dr>
+            <a href="{{ url('admin/downloadExcel/xlsx') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xlsx</a></dr>
+            <a href="{{ url('admin/downloadExcel/csv') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា CSV</a></dr>
 
                 <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                     <thead style="">

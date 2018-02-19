@@ -27,6 +27,11 @@ class Citizen extends Model
         return $this->belongsTo(Gender::class, 'gender');
     }
 
+
+    public function images(){
+        return $this->morphMany('App\Models\Image\Image', 'imageable');
+    }
+
 //
 
 

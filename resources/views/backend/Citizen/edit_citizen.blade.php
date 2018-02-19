@@ -1,6 +1,10 @@
 
 @extends('backend.layouts.app')
+@section('after-styles')
 
+    <link rel="stylesheet" href="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+
+@endsection
 @section('page-header')
     <h1>
         {{ app_name() }}
@@ -108,7 +112,27 @@
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
 
+                                                <div class="col-md-6">
+                                                    <?php
+                                                    //                                                    $image = 'img/backend/citizen.jpg';
 
+                                                    if($citizen->images){
+                                                        $images = $citizen->images;
+                                                    }
+                                                    //                                                    dd($images)
+                                                    ?>
+                                                    <div class=" col-md-6">
+                                                        {{Form::label('image','Input Image')}}
+                                                        @foreach($images as $image)
+                                                            <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image" class="img-thumbnail" width="100%" height="100%" />
+                                                        @endforeach
+
+                                                        {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
+                                                        {{Form::hidden('imageHidden', $citizen->image, array('class'=>'form-control col-md-3'))}}
+
+                                                    </div>
+                                                    <div class="clearfix">&nbsp;</div>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -163,18 +187,46 @@
     </div><!--box box-success-->
 @endsection
 
-{{--@section('after-scripts')--}}
-    {{--<script type="text/javascript" src="{{ asset('node_modules/moment/locale/km.js') }}"></script>--}}
-    {{--<script type="text/javascript">--}}
-        {{--$(function () {--}}
-            {{--$('#datetimepicker1').datetimepicker({--}}
-                {{--locale: 'km',--}}
-                {{--format: 'YYYY-MM-DD'--}}
-            {{--});--}}
+@section('after-scripts')
+    <script type="text/javascript" src="{{ asset('node_modules/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('node_modules/moment/locale/km.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                locale: 'km',
+                format: 'YYYY-MM-DD'
+            });
 
-            {{--$('#datetimepicker10').datetimepicker({--}}
-                {{--viewMode: 'years',--}}
-                {{--format: 'MM/YYYY'--}}
-            {{--});--}}
-        {{--});--}}
-{{--@endsection--}}
+            $('#datetimepicker10').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY'
+            });
+
+            /* click finde image*/
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.img-thumbnail').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#filechoose").change(function () {
+                readURL(this);
+            });
+
+            $(function(){
+                $(".img-thumbnail").click(function(){
+                    $("#filechoose").trigger('click');
+                });
+            });
+        });
+    </script>
+
+@endsection

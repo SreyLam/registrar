@@ -19,7 +19,8 @@
             <div class="box-tools pull-right">
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
                 <a href="{{ url('admin/add_commune') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលឃុំសង្កាត់</a>
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="collapse" style="margin-right:20%"><i class="fa fa-minus"></i></button>
+                </br>
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">

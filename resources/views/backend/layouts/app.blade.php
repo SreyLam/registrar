@@ -71,9 +71,6 @@
         <!-- JavaScripts -->
         @yield('before-scripts')
         {{ Html::script(elixir('js/backend.js')) }}
-        <script type="text/javascript" src="{{ asset('node_modules/moment/min/moment.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
         @yield('after-scripts')
     </body>
 </html>
