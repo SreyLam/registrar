@@ -30,8 +30,9 @@
             <a href="{{ url('admin/downloadExcel/xlsx') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xlsx</a></dr>
             <a href="{{ url('admin/downloadExcel/csv') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា CSV</a></dr>
 
-                <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
-                    <thead style="">
+                <div class="table-responsive">
+                    <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                        <thead>
                         <th>លេខឃុំ</th>
                         <th>លេខបញ្ជី</th>
                         <th>លេខសៀវភៅ</th>
@@ -39,19 +40,20 @@
                         <th>ឈ្មេាះ</th>
                         <th>ឈ្មេាះឲពុក</th>
                         <th>ឈ្មេាះម្ដាយ</th>
-                        <th>ថ្ងៃខែឆ្នាំកំនើត</th>
+                        <th style="width: 20%">ថ្ងៃខែឆ្នាំកំនើត</th>
                         <th>កូនទីប៉ិន្មាន</th>
                         <th>ភេទ</th>
                         <th>ធ្វើនៅឆ្នាំណា</th>
                         <th>ទីកន្លែងកំនើត</th>
-                        <th>ទីកន្លែងកំនើតឲពុក</th>
-                        <th>ទីកន្លែងកំនើតម្ដាយ</th>
+                        {{--<th>ទីកន្លែងកំនើតឲពុក</th>--}}
+                        {{--<th>ទីកន្លែងកំនើតម្ដាយ</th>--}}
                         <th>ពត័រមានផ្សេង</th>
                         {{--<th>រូបភាព</th>--}}
                         <th>សកម្មភាព</th>
-                    </thead>
+                        </thead>
 
-                </table>
+                    </table>
+                </div>
             </div>
         </div><!-- /.box-body -->
     </div><!--box box-success-->
@@ -97,13 +99,12 @@
                     {data: 'mother_name', name: 'mother_name', sortable: false},
                     {data: 'date_birth', name: 'date_birth', sortable: false},
                     {data: 'child_order', name: 'child_order'},
-                    {data: 'gender_id', name: 'gender', sortable: false},
+                    {data: 'gender_id', name: 'gender_id', searchable: false, sortable: false},
                     {data: 'year', name: 'year', sortable: false},
                     {data: 'place_birth', name: 'place_birth', sortable: false},
-                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
-                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
+//                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
+//                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
                     {data: 'other', name: 'other', sortable: false},
-//                    {data: 'image', name: 'image', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

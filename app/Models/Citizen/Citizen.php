@@ -24,7 +24,7 @@ class Citizen extends Model
     }
 
     public function gender_cityzen(){
-        return $this->belongsTo(Gender::class, 'gender');
+        return $this->belongsTo(Gender::class, 'gender_id');
     }
 
 

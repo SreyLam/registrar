@@ -108,7 +108,7 @@
                                                     {{Form::label('years', 'ធ្វើនៅឆ្នាំណា')}}
 
                                                         <div class='input-group date' id='datetimepicker9'>
-                                                            <input type='text' class="form-control" />
+                                                            <input type='text' class="form-control" name="year"/>
                                                             <span class="input-group-addon">
                                                             <span class="glyphicon glyphicon-calendar">
                                                             </span>

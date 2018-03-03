@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Gender extends Model
 {
     public function citizens(){
-        return $this->hasOne(Citizen::class);
+        return $this->hasMany(Citizen::class);
     }
 }

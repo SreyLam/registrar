@@ -33,7 +33,9 @@
             "App\\": "app/"
         },
         "files": [
-            "app/helpers.php"
+            "app/helpers.php",
+            "app/convert_date_khmer.php",
+            "app/convert_date_khmer_to_date_time.php"
         ]
     },
     "autoload-dev": {

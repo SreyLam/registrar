@@ -26,7 +26,8 @@ class CreateCitizensTable extends Migration
             $table->string('mother_name');
             $table->dateTime('date_birth');
             $table->string('child_order');
-            $table->string('gender');
+            $table->integer('gender_id')->unsigned();
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->string('year');
             $table->string('place_birth');
             $table->string('f_place_birth');

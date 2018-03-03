@@ -16,3 +16,5 @@ Route::post('/get_citizen_datatable','CitizenController@getCitizenDatatable')->n
 Route::get('/import_citizen', 'CitizenController@getImport_citizen');
 Route::get('downloadExcel/{type}', 'CitizenController@downloadExcel');
 Route::post('importExcel', 'CitizenController@importExcel');
+
+Route::get('/', 'CitizenController@search');
