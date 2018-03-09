@@ -42,6 +42,7 @@
         </script>
     </head>
     <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
+
         @include('includes.partials.logged-in-as')
 
         <div class="wrapper">
@@ -61,6 +62,9 @@
                 <!-- Main content -->
                 <section class="content">
                     @include('includes.partials.messages')
+                    <div style="line-height: 1.5em; font-weight: bold; font-size: 1.5em; width: 100%;">
+                        <marquee>សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
+                    </div>
                     @yield('content')
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->

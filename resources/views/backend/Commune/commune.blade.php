@@ -5,25 +5,18 @@
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @endsection
 
-@section('page-header')
-    <h1>
-
-        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
-
-    </h1>
-@endsection
-
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('គ្រប់គ្រងឃុំសង្កាត់') }}​!</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រងឃុំសង្កាត់') }}​</h3>
             <div class="box-tools pull-right">
-                {{--<a href="{{ route('admin.dashboard') }}">--}}
-                <a href="{{ url('admin/add_commune') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលឃុំសង្កាត់</a>
-                <button class="btn btn-box-tool" data-widget="collapse" style="margin-right:20%"><i class="fa fa-minus"></i></button>
-                </br>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
+                <div class="pull-right mb-10 hidden-sm hidden-xs">
+                    <a href="{{ url('admin/add_commune') }}"
+                       class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> បញ្ជូលឃុំសង្កាត់</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
         <div class="box-body">
             <div class="table-responsive">
 
@@ -38,23 +31,8 @@
             </div>
         </div><!-- /.box-body -->
     </div><!--box box-success-->
-
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
 @endsection
 @section("after-scripts")
-    {{--{{ Html::script('/node_modules/sweetalert2/dist/sweetalert2.all.js') }}--}}
-    {{--{{ Html::script('/node_modules/sweetalert2/dist/sweetalert2.js') }}--}}
-    {{--{{ Html::script('/node_modules/jquery/dist/jquery.js') }}--}}
 
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
@@ -114,34 +92,5 @@
                     })
             });
         });
-
-//        var responsiveHelper_dt_basic = undefined;
-//
-//        var breakpointDefinition = {
-//            tablet : 1024,
-//            phone : 480
-//        };
-//
-//        $('#dt_basic').dataTable({
-//            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-//            "t"+
-//            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-//            "autoWidth" : true,
-//            "oLanguage": {
-//                "sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>'
-//            },
-//            "preDrawCallback" : function() {
-//                // Initialize the responsive datatables helper once.
-//                if (!responsiveHelper_dt_basic) {
-//                    responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
-//                }
-//            },
-//            "rowCallback" : function(nRow) {
-//                responsiveHelper_dt_basic.createExpandIcon(nRow);
-//            },
-//            "drawCallback" : function(oSettings) {
-//                responsiveHelper_dt_basic.respond();
-//            }
-//        });
     </script>
 @endsection

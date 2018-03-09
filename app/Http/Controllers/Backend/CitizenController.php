@@ -52,22 +52,21 @@ class CitizenController extends Controller
                     convert_date_khmer((new Carbon($citizen->date_birth))->year);
             })
             ->addColumn('actions', function ($citizen){
-                return '<a href=""><button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
-                                        <input type="hidden" class="citizen_id" value="'.$citizen->id.'">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                    </button>
-                                </a>
-                                <a href="/admin/citizens/'.$citizen->id.'/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
-                                        <span class="fa fa-pencil" aria-hidden="true"></span>
-                                    </button>
-                                </a>
-                                
-                                 <a href="/admin/citizens/'.$citizen->id.'/print_image_citizen"><button type="button" class="btn btn-xs btn-primary" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-                                    </button>
-                                </a>
-                                ';
-
+                return '<a href="">
+                            <button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
+                                <input type="hidden" class="citizen_id" value="'.$citizen->id.'">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                            </a>
+                            <a href="/admin/citizens/'.$citizen->id.'/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
+                                    <span class="fa fa-pencil" aria-hidden="true"></span>
+                                </button>
+                            </a>
+                            
+                             <a href="/admin/citizens/'.$citizen->id.'/print_image_citizen"><button type="button" class="btn btn-xs btn-primary" aria-label="Left Align">
+                                    <i class="fa fa-print"></i>
+                                </button>
+                            </a>';
 
             })->make(true);
     }

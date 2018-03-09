@@ -5,12 +5,6 @@
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @endsection
 
-@section('page-header')
-    <h1>
-        <marquee width = "100%"> សូមស្វាគមន៍ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកោលដ្ឋាន</marquee>
-
-    </h1>
-@endsection
 
 @section('content')
     <div class="box box-success">
