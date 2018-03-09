@@ -7,19 +7,19 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('') }}</small>
+        <marquee width = "100%"> សូមស្វាគមន៍ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកោលដ្ឋាន</marquee>
+
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ប្រជាជន') }}​!</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រង់អត្រានុកូលដ្ឋាន') }}​!</h3>
             <div class="box-tools pull-right">
 
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
-                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:10%"><i class="fa fa-plus"></i> បញ្ជូលពត៍មានប្រជាជន</a>
+                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:10%"><i class="fa fa-plus"></i> បញ្ជូលព័ត៍មានប្រជាជន</a>
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
         </div><!-- /.box-header -->
         <dr class="box-body">
@@ -28,26 +28,26 @@
             <a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a></dr>
             <a href="{{ url('admin/downloadExcel/xls') }}" class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xls</a></dr>
             <a href="{{ url('admin/downloadExcel/xlsx') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xlsx</a></dr>
-            <a href="{{ url('admin/downloadExcel/csv') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា CSV</a></dr>
+            {{--<a href="{{ url('admin/downloadExcel/csv') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា CSV</a></dr>--}}
 
                 <div class="table-responsive">
                     <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                         <thead>
-                        <th>លេខឃុំ</th>
+                        <th>លេខកូដឃុំ</th>
                         <th>លេខបញ្ជី</th>
                         <th>លេខសៀវភៅ</th>
-                        <th>លេខប្រភេទសំបុត្រ</th>
-                        <th>ឈ្មេាះ</th>
-                        <th>ឈ្មេាះឲពុក</th>
+                        <th>លេខកូដសំបុត្រ</th>
+                        <th>ឈ្មេាះសាមុីខ្លូន</th>
+                        <th>ឈ្មេាះឪពុក</th>
                         <th>ឈ្មេាះម្ដាយ</th>
                         <th style="width: 20%">ថ្ងៃខែឆ្នាំកំនើត</th>
-                        <th>កូនទីប៉ិន្មាន</th>
+                        <th>កូនទី</th>
                         <th>ភេទ</th>
-                        <th>ធ្វើនៅឆ្នាំណា</th>
+                        <th>ឆ្នាំ</th>
                         <th>ទីកន្លែងកំនើត</th>
-                        {{--<th>ទីកន្លែងកំនើតឲពុក</th>--}}
+                        {{--<th>ទីកន្លែងកំនើតឪពុក</th>--}}
                         {{--<th>ទីកន្លែងកំនើតម្ដាយ</th>--}}
-                        <th>ពត័រមានផ្សេង</th>
+                        {{--<th>ព័ត៍រមានផ្សេង</th>--}}
                         {{--<th>រូបភាព</th>--}}
                         <th>សកម្មភាព</th>
                         </thead>
@@ -99,12 +99,12 @@
                     {data: 'mother_name', name: 'mother_name', sortable: false},
                     {data: 'date_birth', name: 'date_birth', sortable: false},
                     {data: 'child_order', name: 'child_order'},
-                    {data: 'gender_id', name: 'gender_id', searchable: false, sortable: false},
-                    {data: 'year', name: 'year', sortable: false},
+                    {data: 'gender_id', name: 'gender_id', sortable: true},
+                    {data: 'year', name: 'year'},
                     {data: 'place_birth', name: 'place_birth', sortable: false},
 //                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
 //                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
-                    {data: 'other', name: 'other', sortable: false},
+//                    {data: 'other', name: 'other', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

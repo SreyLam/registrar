@@ -15,12 +15,12 @@
         </div><!--user-panel-->
 
         <!-- search form (Optional) -->
-        {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
+        {{--{{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}--}}
             <div class="input-group">
-                {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
+                {{--{{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}--}}
 
                   <span class="input-group-btn">
-                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    {{--<button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>--}}
                   </span><!--input-group-btn-->
             </div><!--input-group-->
         {{ Form::close() }}
@@ -28,7 +28,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
+            {{--<li class="header">{{ trans('menus.backend.sidebar.general') }}</li>--}}
 
             <li class="{{ Active::pattern('admin/dashboard') }}">
                 <a href="{{ route('admin.dashboard') }}">
@@ -53,7 +53,7 @@
             <li class="{{ Active::pattern('admin/lettertype') }}">
                 <a href="{{ route('admin.lettertype') }}">
                     <i class="fa fa-dashboard"></i>
-                    គ្រប់គ្រងប្រភេតសំបុត្រ
+                    គ្រប់គ្រងប្រភេទសំបុត្រ
                     {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
                 </a>
             </li>
@@ -86,7 +86,7 @@
                 <li class="{{ Active::pattern('admin/access/*') }} treeview">
                     <a href="#">
                         <i class="fa fa-users"></i>
-                        <span>{{ trans('menus.backend.access.title') }}</span>
+                        ការគ្រប់គ្រងអ្នកប្រើប្រាស់
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
 
@@ -95,7 +95,7 @@
                             <li class="{{ Active::pattern('admin/access/user*') }}">
                                 <a href="{{ route('admin.access.user.index') }}">
                                     <i class="fa fa-circle-o"></i>
-                                    ការគ្រប់គ្រងអ្នកប្រើប្រាស់
+                                    អ្នកប្រើប្រាស់
 
                                     {{--<span>{{ trans('labels.backend.access.users.management') }}</span>--}}
                                 </a>
@@ -106,7 +106,7 @@
                             <li class="{{ Active::pattern('admin/access/role*') }}">
                                 <a href="{{ route('admin.access.role.index') }}">
                                     <i class="fa fa-circle-o"></i>
-                                    ការគ្រប់គ្រងតួននាទី
+                                    តួននាទី
                                     {{--<span>{{ trans('labels.backend.access.roles.management') }}</span>--}}
                                 </a>
                             </li>
@@ -115,30 +115,30 @@
                 </li>
             @endauth
 
-            <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
+            {{--<li class="header">{{ trans('menus.backend.sidebar.system') }}</li>--}}
 
-            <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
-                <a href="#">
-                    <i class="fa fa-list"></i>
-                    <span>{{ trans('menus.backend.log-viewer.main') }}</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
-                    <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        <a href="{{ route('admin.log-viewer::dashboard') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
-                        </a>
-                    </li>
+            {{--<li class="{{ Active::pattern('admin/log-viewer*') }} treeview">--}}
+                {{--<a href="#">--}}
+                    {{--<i class="fa fa-list"></i>--}}
+                    {{--<span>{{ trans('menus.backend.log-viewer.main') }}</span>--}}
+                    {{--<i class="fa fa-angle-left pull-right"></i>--}}
+                {{--</a>--}}
+                {{--<ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">--}}
+                    {{--<li class="{{ Active::pattern('admin/log-viewer') }}">--}}
+                        {{--<a href="{{ route('admin.log-viewer::dashboard') }}">--}}
+                            {{--<i class="fa fa-circle-o"></i>--}}
+                            {{--<span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
 
-                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        <a href="{{ route('admin.log-viewer::logs.list') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    {{--<li class="{{ Active::pattern('admin/log-viewer/logs') }}">--}}
+                        {{--<a href="{{ route('admin.log-viewer::logs.list') }}">--}}
+                            {{--<i class="fa fa-circle-o"></i>--}}
+                            {{--<span>{{ trans('menus.backend.log-viewer.logs') }}</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
         </ul><!-- /.sidebar-menu -->
     </section><!-- /.sidebar -->
 </aside>

@@ -52,15 +52,21 @@ class CitizenController extends Controller
                     convert_date_khmer((new Carbon($citizen->date_birth))->year);
             })
             ->addColumn('actions', function ($citizen){
-                return '<a href=""><button type="button" class="btn btn-danger delete-citizen" aria-label="Left Align">
+                return '<a href=""><button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
                                         <input type="hidden" class="citizen_id" value="'.$citizen->id.'">
                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                     </button>
                                 </a>
-                                <a href="/admin/citizens/'.$citizen->id.'/edit_citizen"><button type="button" class="btn btn-success" aria-label="Left Align">
+                                <a href="/admin/citizens/'.$citizen->id.'/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
+                                    </button>
+                                </a>
+                                
+                                 <a href="/admin/citizens/'.$citizen->id.'/print_image_citizen"><button type="button" class="btn btn-xs btn-primary" aria-label="Left Align">
                                         <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
                                     </button>
-                                </a>';
+                                </a>
+                                ';
 
 
             })->make(true);
@@ -141,8 +147,8 @@ class CitizenController extends Controller
 
     public function postStore_citizen($id)
     {
+
         $input = Input::all();
-        dd($input);
         //update into database
 
         $citizen = DB::table('citizens')->where('id', $id)->update(array(
@@ -155,7 +161,7 @@ class CitizenController extends Controller
             'mother_name'  => $input['mother_name'],
             'date_birth'  => $input['date_birth'],
             'child_order'  => $input['child_order'],
-            'gender'  => $input['gender'],
+            'gender_id'  => $input['gender'],
             'year'  => $input['year'],
             'place_birth'  => $input['place_birth'],
             'f_place_birth'  => $input['f_place_birth'],
@@ -165,9 +171,9 @@ class CitizenController extends Controller
 
         if (\request()->hasFile('citizen_image')) {
             $newImage = new Image();
+
             $newImage->imageable_id = $id;
             $newImage->imageable_type = Citizen::class;
-
             $file = Input::file('citizen_image');
             $destinationPath = public_path('img/backend/citizen');
             $filename = time().''.'.'.$file->getClientOriginalExtension();
@@ -176,18 +182,20 @@ class CitizenController extends Controller
 
             $newImage->image_src = $filename;
 
-            //dd($newImage);
 
             $newImage->saveOrFail();
+
+//            dd($newImage);
         }
 
 
 
-        if($citizen){
+//        if($citizen){
+
             return Redirect::to('admin/citizen')->withSuccess('Update Successfully');
-        }else{
-            return Redirect::back()->withError('Update Unsuccessfully');
-        }
+//        }else{
+//            return Redirect::back()->withError('Update Unsuccessfully');
+//        }
     }
 
     public function getImport_citizen()

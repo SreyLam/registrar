@@ -32,7 +32,7 @@ class CommuneController extends Controller
                                     </button>
                                 </a>
                                 <a href="/admin/communes/'.$commune->id.'/edit_commune"><button type="button" class="btn btn-success" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </button>
                                 </a>'
 

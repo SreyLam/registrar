@@ -7,15 +7,16 @@
 @endsection
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('strings.backend..title') }}</small>
+
+        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
+
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ប្រជាជន') }} {{ $logged_in_user->name }}!</h3>
+            <h3 class="box-title">{{ trans('ទម្រង់កែប្រែប្រជាជន') }}!</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
@@ -126,12 +127,17 @@
                                                         @foreach($images as $image)
                                                             <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image" class="img-thumbnail" width="100%" height="100%" />
                                                         @endforeach
-
+                                                        <img src="{{URL::to('/')}}/img/" alt="image" class="img-thumbnail" width="100%" height="100%" />
                                                         {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
-                                                        {{Form::hidden('imageHidden', $citizen->image, array('class'=>'form-control col-md-3'))}}
+                                                        {{Form::hidden('imageHidden', $image->image, array('class'=>'form-control col-md-3'))}}
+
+                                                        {{--<img src="{{URL::to('/')}}/img/" alt="image" class="img-thumbnail" width="100%" height="100%" />--}}
+                                                        {{--{{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;', 'accept' => 'image/*', 'name' => 'citizen_image'])}}--}}
 
                                                     </div>
                                                     <div class="clearfix">&nbsp;</div>
+
+
                                                 </div>
 
                                             </div>

@@ -6,15 +6,16 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('') }}</small>
+
+        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
+
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ភេទ') }}​!</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រងភេទ') }}​!</h3>
             <div class="box-tools pull-right">
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
                 <a href="{{ url('admin/add_gender') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលភេទ</a>
@@ -40,7 +41,7 @@
                                     </button>
                                 </a>
                                 <a href="{{URL::to('/admin/edit_gender/'.@$g->id)}}"><button type="button" class="btn btn-success" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </button>
                                 </a>
                             </td>

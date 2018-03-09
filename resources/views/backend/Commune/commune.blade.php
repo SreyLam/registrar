@@ -7,15 +7,16 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('') }}</small>
+
+        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
+
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ឃុំសង្កាត់') }}​!</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រងឃុំសង្កាត់') }}​!</h3>
             <div class="box-tools pull-right">
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
                 <a href="{{ url('admin/add_commune') }}" class="btn btn-success " style="margin-left:20%"><i class="fa fa-plus"></i> បញ្ជូលឃុំសង្កាត់</a>
@@ -28,7 +29,7 @@
 
                 <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                     <thead style="">
-                    <th>លេខឃុំ</th>
+                    <th>លេខកូដឃុំ</th>
                     <th>ឈ្មេាះឃុំ</th>
                     <th>សកម្មភាព</th>
                     </thead>

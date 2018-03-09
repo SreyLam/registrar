@@ -3,15 +3,16 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('strings.backend..title') }}</small>
+
+        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
+
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ឃុំសង្កាត់') }} {{ $logged_in_user->name }}!</h3>
+            <h3 class="box-title">{{ trans('ទម្រង់កែប្រែឃុំសង្កាត់') }}!</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->

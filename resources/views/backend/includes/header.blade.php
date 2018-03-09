@@ -8,7 +8,7 @@
 
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-            {{ app_name() }}
+            ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ខាន
         </span>
     </a>
 

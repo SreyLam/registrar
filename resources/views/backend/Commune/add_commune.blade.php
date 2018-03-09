@@ -3,15 +3,16 @@
 
 @section('page-header')
     <h1>
-        {{ app_name() }}
-        <small>{{ trans('strings.backend..title') }}</small>
+
+        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
+
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('ឃុំសង្កាត់') }} {{ $logged_in_user->name }}!</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រងឃុំសង្កាត់') }}!</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
@@ -28,11 +29,11 @@
                                     <div class="col-md-6">
                                         {{Form::hidden('id_product', @$commune->id, ['class'=>'form-control'])}}
 
-                                        {{Form::label('number', 'លេខឃុំ')}}
+                                        {{Form::label('number', 'លេខកូដឃុំ')}}
                                         {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('name', 'ឈ្មេាះ')}}
+                                        {{Form::label('name', 'ឈ្មេាះឃុំ')}}
                                         {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឃុំ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
