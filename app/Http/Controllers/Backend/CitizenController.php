@@ -28,42 +28,43 @@ class CitizenController extends Controller
         $images = Image::all();
         $years = new Carbon();
 
-        return view('backend.Citizen.add_citizen', compact('communes','letterypes','genders','years','images'));
+        return view('backend.Citizen.add_citizen', compact('communes', 'letterypes', 'genders', 'years', 'images'));
 
     }
 
-    public function getCitizenDatatable(){
+    public function getCitizenDatatable()
+    {
 
-        $citizens = Citizen::select('*')->with('commune','lettertype', 'gender_cityzen')->get();
+        $citizens = Citizen::select('*')->with('commune', 'lettertype', 'gender_cityzen')->get();
 
         return Datatables::of($citizens)
-            ->editColumn('commune_id', function ($citizen){
+            ->editColumn('commune_id', function ($citizen) {
                 return $citizen->commune->number;
             })
-            ->editColumn('lettertype_id', function ($citizen){
+            ->editColumn('lettertype_id', function ($citizen) {
                 return $citizen->lettertype->number;
             })
-            ->editColumn('gender_id', function ($citizen){
+            ->editColumn('gender_id', function ($citizen) {
                 return $citizen->gender_cityzen->gender_name;
             })
-            ->editColumn('date_birth', function ($citizen){
-                return convert_date_khmer((new Carbon($citizen->date_birth))->day).' '.
-                    convert_khmer_month((new Carbon($citizen->date_birth))->month).' '.
+            ->editColumn('date_birth', function ($citizen) {
+                return convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
+                    convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
                     convert_date_khmer((new Carbon($citizen->date_birth))->year);
             })
-            ->addColumn('actions', function ($citizen){
+            ->addColumn('actions', function ($citizen) {
                 return '<a href="">
                             <button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
-                                <input type="hidden" class="citizen_id" value="'.$citizen->id.'">
+                                <input type="hidden" class="citizen_id" value="' . $citizen->id . '">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                             </button>
                             </a>
-                            <a href="/admin/citizens/'.$citizen->id.'/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
+                            <a href="/admin/citizens/' . $citizen->id . '/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
                                     <span class="fa fa-pencil" aria-hidden="true"></span>
                                 </button>
                             </a>
                             
-                             <a href="/admin/citizens/'.$citizen->id.'/print_image_citizen"><button type="button" class="btn btn-xs btn-primary" aria-label="Left Align">
+                             <a href="/admin/images/' . $citizen->id . '/print_image"><button type="button" class="btn btn-xs btn-primary" aria-label="Left Align">
                                     <i class="fa fa-print"></i>
                                 </button>
                             </a>';
@@ -92,7 +93,7 @@ class CitizenController extends Controller
         $newCitzen->created_at = Carbon::now();
         $newCitzen->updated_at = Carbon::now();
 
-        if($newCitzen->save()){
+        if ($newCitzen->save()) {
             if (\request()->hasFile('citizen_image')) {
                 $newImage = new Image();
                 $newImage->imageable_id = $newCitzen->id;
@@ -100,7 +101,7 @@ class CitizenController extends Controller
 
                 $file = Input::file('citizen_image');
                 $destinationPath = public_path('img/backend/citizen');
-                $filename = time().''.'.'.$file->getClientOriginalExtension();
+                $filename = time() . '' . '.' . $file->getClientOriginalExtension();
 
                 $file->move($destinationPath, $filename);
 
@@ -134,14 +135,16 @@ class CitizenController extends Controller
             return Response::json(['status' => false]);
         }
     }
+
     public function getEdit_citizen($id)
     {
         $communes = Commune::all();
         $lettertypes = Lettertype::all();
         $genders = Gender::all();
         $citizen = Citizen::where('id', $id)->first();
+//        $images = Image::where('id', $id) ->first();
 
-        return View::make('backend.Citizen.edit_citizen', compact('citizen', 'communes','lettertypes','genders'));
+        return View::make('backend.Citizen.edit_citizen', compact('citizen', 'communes', 'lettertypes', 'genders'));
     }
 
     public function postStore_citizen($id)
@@ -151,21 +154,21 @@ class CitizenController extends Controller
         //update into database
 
         $citizen = DB::table('citizens')->where('id', $id)->update(array(
-            'commune_id'  => $input['commune_id'],
-            'number_list'  => $input['number_list'],
-            'number_book'  => $input['number_book'],
-            'lettertype_id'  => $input['lettertype_id'],
-            'name'  => $input['name'],
-            'father_name'  => $input['father_name'],
-            'mother_name'  => $input['mother_name'],
-            'date_birth'  => $input['date_birth'],
-            'child_order'  => $input['child_order'],
-            'gender_id'  => $input['gender'],
-            'year'  => $input['year'],
-            'place_birth'  => $input['place_birth'],
-            'f_place_birth'  => $input['f_place_birth'],
-            'm_place_birth'  => $input['m_place_birth'],
-            'other'  => $input['other'],
+            'commune_id' => $input['commune_id'],
+            'number_list' => $input['number_list'],
+            'number_book' => $input['number_book'],
+            'lettertype_id' => $input['lettertype_id'],
+            'name' => $input['name'],
+            'father_name' => $input['father_name'],
+            'mother_name' => $input['mother_name'],
+            'date_birth' => $input['date_birth'],
+            'child_order' => $input['child_order'],
+            'gender_id' => $input['gender'],
+            'year' => $input['year'],
+            'place_birth' => $input['place_birth'],
+            'f_place_birth' => $input['f_place_birth'],
+            'm_place_birth' => $input['m_place_birth'],
+            'other' => $input['other'],
         ));
 
         if (\request()->hasFile('citizen_image')) {
@@ -175,7 +178,7 @@ class CitizenController extends Controller
             $newImage->imageable_type = Citizen::class;
             $file = Input::file('citizen_image');
             $destinationPath = public_path('img/backend/citizen');
-            $filename = time().''.'.'.$file->getClientOriginalExtension();
+            $filename = time() . '' . '.' . $file->getClientOriginalExtension();
 
             $file->move($destinationPath, $filename);
 
@@ -188,10 +191,9 @@ class CitizenController extends Controller
         }
 
 
-
 //        if($citizen){
 
-            return Redirect::to('admin/citizen')->withSuccess('Update Successfully');
+        return Redirect::to('admin/citizen')->withSuccess('Update Successfully');
 //        }else{
 //            return Redirect::back()->withError('Update Unsuccessfully');
 //        }
@@ -201,6 +203,7 @@ class CitizenController extends Controller
     {
         return view('backend.Citizen.import_citizen');
     }
+
     /**
      * File Export Code
      *
@@ -211,18 +214,18 @@ class CitizenController extends Controller
         $citizens = Citizen::get();
         $data = [];
 
-        foreach ($citizens as $citizen){
+        foreach ($citizens as $citizen) {
 
-            $tmp = Citizen::where('id',$citizen->id)->first()->commune->number;
-            $tmp_letter_type = Citizen::where('id',$citizen->id)->first()->lettertype->number;
-            $tmp_date_birth = convert_date_khmer((new Carbon($citizen->date_birth))->day).' '.
-                                convert_khmer_month((new Carbon($citizen->date_birth))->month).' '.
-                                convert_date_khmer((new Carbon($citizen->date_birth))->year);
-            $tmp_gender = Citizen::where('id',$citizen->id)->first()->gender_cityzen->gender_name;
+            $tmp = Citizen::where('id', $citizen->id)->first()->commune->number;
+            $tmp_letter_type = Citizen::where('id', $citizen->id)->first()->lettertype->number;
+            $tmp_date_birth = convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
+                convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
+                convert_date_khmer((new Carbon($citizen->date_birth))->year);
+            $tmp_gender = Citizen::where('id', $citizen->id)->first()->gender_cityzen->gender_name;
 
 
-            $citizen_tmp = Citizen::where('id',$citizen->id)->select('number_list', 'number_book', 'name', 'father_name', 'mother_name','child_order','year','place_birth'
-            ,'f_place_birth','m_place_birth','other')->first()->toArray();
+            $citizen_tmp = Citizen::where('id', $citizen->id)->select('number_list', 'number_book', 'name', 'father_name', 'mother_name', 'child_order', 'year', 'place_birth'
+                , 'f_place_birth', 'm_place_birth', 'other')->first()->toArray();
 
             $citizen_tmp['date_birth'] = $tmp_date_birth;
             $citizen_tmp['commune_number'] = $tmp;
@@ -231,9 +234,8 @@ class CitizenController extends Controller
             array_push($data, $citizen_tmp);
         }
 
-        return Excel::create('itsolutionstuff_example', function($excel) use ($data) {
-            $excel->sheet('mySheet', function($sheet) use ($data)
-            {
+        return Excel::create('itsolutionstuff_example', function ($excel) use ($data) {
+            $excel->sheet('mySheet', function ($sheet) use ($data) {
                 $sheet->fromArray($data);
             });
         })->download($type);
@@ -243,20 +245,20 @@ class CitizenController extends Controller
     public function importExcel(Request $request)
     {
 
-        if($request->hasFile('import_file')){
+        if ($request->hasFile('import_file')) {
 
             $file = $request->file('import_file');
 
             $results = null;
 
-            $data = Excel::load($file, function() {
+            $data = Excel::load($file, function () {
             })->get();
 
 
-            if(!empty($data)){
+            if (!empty($data)) {
 
 
-                $insert= [];
+                $insert = [];
 
 
                 foreach ($data->toArray() as $key => $v) {
@@ -272,7 +274,7 @@ class CitizenController extends Controller
                     $commune = Commune::where('number', $v['commune_number'])->first();
                     $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
                     $gender = Gender::where('gender_name', $v['gender'])->first();
-                    if(!empty($v)){
+                    if (!empty($v)) {
 
                         $insert = [
                             'commune_id' => $commune->id,
@@ -295,24 +297,24 @@ class CitizenController extends Controller
                         ];
                     }
 
-                    if(!empty($insert)){
+                    if (!empty($insert)) {
                         Citizen::insert($insert);
 
                     }
                 }
 
-                return Redirect::to('admin/citizen')->with('success','Insert Record successfully.');
+                return Redirect::to('admin/citizen')->with('success', 'Insert Record successfully.');
 
 
             }
 
 
-        }else {
+        } else {
 
         }
 
 
-        return back()->with('error','Please Check your file, Something is wrong there.');
+        return back()->with('error', 'Please Check your file, Something is wrong there.');
     }
 
 
@@ -336,4 +338,33 @@ class CitizenController extends Controller
 //
 //    }
 
+    public function getPrint_image($id)
+    {
+//        dd($id);
+//        $images = Image::all();
+        $images = Image::where('id', $id) ->first();
+
+//        $citizen = Citizen::where('id', $id)->first();
+        dd($images);
+
+        if (\request()->hasFile('citizen_image')) {
+            $newImage = new Image();
+
+            $newImage->imageable_id = $id;
+            $newImage->imageable_type = Citizen::class;
+            $file = Input::file('citizen_image');
+            $destinationPath = public_path('img/backend/citizen');
+            $filename = time() . '' . '.' . $file->getClientOriginalExtension();
+
+            $file->move($destinationPath, $filename);
+
+            $newImage->image_src = $filename;
+
+
+            $newImage->saveOrFail();
+//        dd($images);
+            return view('backend.Citizen.citizen', compact('images'));
+        }
+
+    }
 }

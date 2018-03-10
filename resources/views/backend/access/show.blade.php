@@ -2,13 +2,6 @@
 
 @section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.view'))
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.view') }}</small>
-    </h1>
-@endsection
-
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">

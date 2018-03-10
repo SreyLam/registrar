@@ -6,3 +6,4 @@
  * Time: 2:21 PM
  */
 Route::get('/image', 'ImageController@getList_image')->name('image');
+//Route::get('citizens/{id}/edit_citizen','CitizenController@getEdit_citizen')->name('citizen.datatable');

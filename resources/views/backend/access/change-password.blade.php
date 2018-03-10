@@ -2,12 +2,12 @@
 
 @section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.change_password'))
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.change_password') }}</small>
-    </h1>
-@endsection
+{{--@section('page-header')--}}
+    {{--<h1>--}}
+        {{--{{ trans('labels.backend.access.users.management') }}--}}
+        {{--<small>{{ trans('labels.backend.access.users.change_password') }}</small>--}}
+    {{--</h1>--}}
+{{--@endsection--}}
 
 @section('content')
     {{ Form::open(['route' => ['admin.access.user.change-password', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'patch']) }}

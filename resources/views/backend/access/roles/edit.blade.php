@@ -2,12 +2,12 @@
 
 @section ('title', trans('labels.backend.access.roles.management') . ' | ' . trans('labels.backend.access.roles.edit'))
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.access.roles.management') }}
-        <small>{{ trans('labels.backend.access.roles.edit') }}</small>
-    </h1>
-@endsection
+{{--@section('page-header')--}}
+    {{--<h1>--}}
+        {{--{{ trans('labels.backend.access.roles.management') }}--}}
+        {{--<small>{{ trans('labels.backend.access.roles.edit') }}</small>--}}
+    {{--</h1>--}}
+{{--@endsection--}}
 
 @section('content')
     {{ Form::model($role, ['route' => ['admin.access.role.update', $role], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) }}

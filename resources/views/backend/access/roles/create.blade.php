@@ -2,12 +2,6 @@
 
 @section ('title', trans('labels.backend.access.roles.management') . ' | ' . trans('labels.backend.access.roles.create'))
 
-@section('page-header')
-    <h1>
-        {{ trans('labels.backend.access.roles.management') }}
-        <small>{{ trans('labels.backend.access.roles.create') }}</small>
-    </h1>
-@endsection
 
 @section('content')
     {{ Form::open(['route' => 'admin.access.role.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'create-role']) }}

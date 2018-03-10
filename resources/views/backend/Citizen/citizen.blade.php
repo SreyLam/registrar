@@ -9,19 +9,44 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('គ្រប់គ្រង់អត្រានុកូលដ្ឋាន') }}​!</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រង់អត្រានុកូលដ្ឋាន') }}​</h3>
             <div class="box-tools pull-right">
+                <div class="pull-right mb-10 hidden-sm hidden-xs">
+
+
+                    <a href="{{ url('admin/import_citizen') }}"
+                       class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a>
+
+                    <a href="{{ url('admin/downloadExcel/xls') }}"
+                       class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> ទាញយកទិន្ន័យជា Excel xls</a>
+
+                    <a href="{{ url('admin/downloadExcel/xlsx') }}"
+                       class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> ទាញយកទិន្ន័យជា Excel xlsx</a>
+
+                    <a href="{{ url('admin/add_citizen') }}"
+                       class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> បញ្ជូលព័ត៍មានប្រជាជន</a>
+                </div>
+                {{--<div class="clearfix"></div>--}}
+                <div class="pull-right mb-10 hidden-sm hidden-xs">
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        {{--<div class="box-header with-border">--}}
+            {{--<h3 class="box-title">{{ trans('គ្រប់គ្រង់អត្រានុកូលដ្ឋាន') }}​</h3>--}}
+            {{--<div class="box-tools pull-right">--}}
 
                 {{--<a href="{{ route('admin.dashboard') }}">--}}
-                <a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:10%"><i class="fa fa-plus"></i> បញ្ជូលព័ត៍មានប្រជាជន</a>
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        </div><!-- /.box-header -->
+                {{--<a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:10%"><i class="fa fa-plus"></i> បញ្ជូលព័ត៍មានប្រជាជន</a>--}}
+                {{--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>--}}
+        {{--</div><!-- /.box-header -->--}}
         <dr class="box-body">
 
-            <div class="table-responsive"></div></dr>
-            <a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a></dr>
-            <a href="{{ url('admin/downloadExcel/xls') }}" class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xls</a></dr>
-            <a href="{{ url('admin/downloadExcel/xlsx') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xlsx</a></dr>
+            {{--<div class="table-responsive"></div></dr>--}}
+            {{--<a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a></dr>--}}
+            {{--<a href="{{ url('admin/downloadExcel/xls') }}" class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xls</a></dr>--}}
+            {{--<a href="{{ url('admin/downloadExcel/xlsx') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា Excel xlsx</a></dr>--}}
             {{--<a href="{{ url('admin/downloadExcel/csv') }}"class="btn btn-primary" style="margin-bottom: 1%"><i class="fa fa-plus"></i>ទាញយកទិន្ន័យជា CSV</a></dr>--}}
 
                 <div class="table-responsive">
@@ -52,17 +77,7 @@
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
 
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
 @endsection
 @section("after-scripts")
     {{--{{ Html::script('/node_modules/sweetalert2/dist/sweetalert2.all.js') }}--}}

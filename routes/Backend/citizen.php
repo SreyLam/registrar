@@ -18,3 +18,4 @@ Route::get('downloadExcel/{type}', 'CitizenController@downloadExcel');
 Route::post('importExcel', 'CitizenController@importExcel');
 
 Route::get('/', 'CitizenController@search');
+Route::get('images/{id}/print_image', 'CitizenController@getPrint_image');

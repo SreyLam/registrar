@@ -1,13 +1,6 @@
 
 @extends('backend.layouts.app')
 
-@section('page-header')
-    <h1>
-
-        <marquee width = "100%"> សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រង់ស្តិតិអត្រានុកូលដ្ឋាន</marquee>
-
-    </h1>
-@endsection
 
 @section('content')
     <div class="box box-success">
@@ -19,25 +12,36 @@
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="col-md-12" style="margin:auto; background-color: #FFFFFF; width:100%">
-                {{Form::open(['url'=>'admin/add-lettertype', 'method'=>'post' , 'files'=>true, 'enctype'=>'multipart/form-data'])}}
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="x_panel">
                             <div class="x_content">
                                 <div class="row">
                                     {{--Left Form--}}
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-md-offset-3 ">
+                                        {{Form::open(['url'=>'admin/add-lettertype', 'method'=>'post' , 'files'=>true, 'enctype'=>'multipart/form-data'])}}
                                         {{Form::hidden('id', @$lettertype->id, ['class'=>'form-control'])}}
 
 
                                         {{Form::label('number', 'លេខកូដសំបុត្រ')}}
                                         {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈលេខសំបុត្រ !', 'id'=>'inputTextBox'])}}
-                                        <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('name', 'ឈ្មេាះសំបុត្រ')}}
                                         {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមជ្រើសរើសឈ្មេាះមេសំបុត្រ !', 'id'=>'inputTextBox'])}}
-                                        <div class="clearfix">&nbsp;</div>
 
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-12 col-md-offset-3">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-save"></i> បញ្ជូន
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-right">
-                        {{Form::submit('បញ្ជូន',['class'=>'btn btn-primary'])}}
+                        {{--{{Form::submit('បញ្ជូន',['class'=>'btn btn-primary'])}}--}}
                     </div>
                 </div>
                 {{Form::close()}}
@@ -55,17 +59,7 @@
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
 
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
 @endsection
 
 
