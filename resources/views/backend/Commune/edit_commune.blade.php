@@ -21,11 +21,11 @@
                                         {{Form::open(['url'=>'admin/post_editcomm/'.$commune->id, 'method'=>'put' , 'files'=>true, 'enctype'=>'multipart/form-data'])}}
                                         {{Form::hidden('id_product', @$commune->id, ['class'=>'form-control'])}}
 
-                                        {{Form::label('number', 'លេខឃុំ')}}
-                                        {{Form::text('number',$commune->number, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('number', 'លេខកូដឃុំ')}}
+                                        {{Form::text('number',$commune->number, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខកូដឃុំ !', 'id'=>'inputTextBox'])}}
 
 
-                                        {{Form::label('name', 'ឈ្មេាះ')}}
+                                        {{Form::label('name', 'ឈ្មេាះឃុំ')}}
                                         {{Form::text('name', $commune->name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឃុំ !', 'id'=>'inputTextBox'])}}
 
                                     </div>

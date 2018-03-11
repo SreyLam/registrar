@@ -30,11 +30,15 @@
                             <td>{{$g->gender_name}}</td>
 
                             <td>
-                                <a href=""><button type="button" class="btn btn-xs btn-danger delete-gender" aria-label="Left Align">
-                                        <input type="hidden" class="gender_id" value="{{$g->id}}">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                    </button>
-                                </a>
+                                @foreach (auth()->user()->roles as $role)
+                                    @if($role->id == 1)
+                                        <button type="button" class="btn btn-xs btn-danger delete-gender" aria-label="Left Align">
+                                            <input type="hidden" class="gender_id" value="{{$g->id}}">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </button>
+                                    @endif
+                                @endforeach
+
                                 <a href="{{URL::to('/admin/edit_gender/'.@$g->id)}}"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
                                         <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </button>
@@ -49,17 +53,7 @@
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
 
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
 @endsection
 @section("before-scripts")
     <script src="{{ asset('/node_modules/sweetalert2/dist/sweetalert2.all.js') }}"></script>

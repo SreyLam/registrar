@@ -79,6 +79,7 @@
                                                     {{--{{Form::text('date_birth', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}--}}
                                                     {{--<div class="clearfix">&nbsp;</div>--}}
                                                 </div>
+
                                                 <div class="col-md-6">
                                                     {{Form::label('child_order', 'កូនទី')}}
                                                     {{Form::text('child_order', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}
@@ -99,20 +100,10 @@
 
                                                         <div class='input-group date' id='datetimepicker9'>
                                                             <input type='text' class="form-control" name="year"/>
-                                                            <span class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-calendar">
-                                                            </span>
-                                                        </span>
+                                                                <span class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                                </span>
                                                         </div>
-
-                                                    {{--<div class='input-group date' id='datetimepicker10'>--}}
-                                                        {{--<input type='years' class="form-control" name="year"/>--}}
-                                                        {{--<span class="input-group-addon">--}}
-                                                        {{--<span class="glyphicon glyphicon-calendar"></span>--}}
-                                                        {{--</span>--}}
-                                                    {{--</div>--}}
-                                                    {{--{{Form::text('year', '', ['class'=>'input-group date' id='datetimepicker10', 'required',id='datetimepicker10', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy'])}}--}}
-                                                    {{--<div class="clearfix">&nbsp;</div>--}}
                                                 </div>
 
                                                 <div class=" col-md-6">

@@ -32,11 +32,15 @@
                             {{--<td>{{$l->type->name}}</td>--}}
 
                             <td>
-                                <a href=""><button type="button" class="btn btn-xs btn-danger delete-lettertype" aria-label="Left Align">
-                                        <input type="hidden" class="lettertype_id" value="{{$l->id}}">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                    </button>
-                                </a>
+                                @foreach (auth()->user()->roles as $role)
+                                    @if($role->id == 1)
+                                        <button type="button" class="btn btn-xs btn-danger delete-lettertype" aria-label="Left Align">
+                                            <input type="hidden" class="lettertype_id" value="{{$l->id}}">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </button>
+                                    @endif
+                                @endforeach
+
                                 <a href="{{URL::to('/admin/edit_lettertype/'.@$l->id)}}"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
                                         <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </button>

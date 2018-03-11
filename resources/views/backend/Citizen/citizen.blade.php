@@ -22,7 +22,6 @@
 
                     <a href="{{ url('admin/downloadExcel/xlsx') }}"
                        class="btn btn-primary btn-xs"><i class="fa fa-plus-circle"></i> ទាញយកទិន្ន័យជា Excel xlsx</a>
-
                     <a href="{{ url('admin/add_citizen') }}"
                        class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> បញ្ជូលព័ត៍មានប្រជាជន</a>
                 </div>

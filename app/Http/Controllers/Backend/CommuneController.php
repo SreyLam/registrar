@@ -28,17 +28,21 @@ class CommuneController extends Controller
 
         return Datatables::of($communes)
             ->addColumn('actions', function ($commune) {
-                return '<a href="">
-                            <button type="button" class="btn btn-danger btn-xs delete-commune" aria-label="Left Align">
-                              <input type="hidden" class="commune_id" value="' . $commune->id . '">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            </button>
-                            </a>
-                            <a href="/admin/communes/' . $commune->id . '/edit_commune"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
+                $action = '<a href="/admin/communes/' . $commune->id . '/edit_commune"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
                                     <span class="fa fa-pencil" aria-hidden="true"></span>
                                 </button>
                             </a>';
+                foreach (auth()->user()->roles as $role){
+                    if ($role->id == 1){
 
+                        $action .= '<button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
+                                <input type="hidden" class="citizen_id" value="' . $commune->id . '">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>';
+
+                    }
+                }
+                return $action;
             })
             ->make(true);
     }

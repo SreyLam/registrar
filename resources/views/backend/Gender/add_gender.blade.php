@@ -22,7 +22,7 @@
                                         {{Form::hidden('id', @$gender->id, ['class'=>'form-control'])}}
 
 
-                                        {{Form::label('gender_name', 'ឈ្មេាះ')}}
+                                        {{Form::label('gender_name', 'ភេទ')}}
                                         {{Form::text('gender_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះភេទ !', 'id'=>'inputTextBox'])}}
 
 
