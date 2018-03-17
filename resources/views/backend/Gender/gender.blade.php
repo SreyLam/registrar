@@ -65,7 +65,7 @@
             $( document ).on( "click", '.delete-gender' , function(e) {
                 e.preventDefault();
                 var gender_id = $(this).find('.gender_id').val();
-                var dom = $(this).parent().parent().parent();
+                var dom = $(this).parent().parent();
                 swal({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

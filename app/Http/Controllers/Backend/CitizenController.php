@@ -59,7 +59,6 @@ class CitizenController extends Controller
             ->addColumn('actions', function ($citizen) {
 
 
-
                 $action = '<a href="/admin/citizens/' . $citizen->id . '/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
                                     <span class="fa fa-pencil" aria-hidden="true"></span>
                                 </button>
@@ -161,8 +160,6 @@ class CitizenController extends Controller
         $lettertypes = Lettertype::all();
         $genders = Gender::all();
         $citizen = Citizen::where('id', $id)->first();
-//        $date = new Carbon($citizen->date_birth);
-//        $images = Image::where('id', $id) ->first();
 
         return View::make('backend.Citizen.edit_citizen', compact('citizen', 'communes', 'lettertypes', 'genders'));
     }

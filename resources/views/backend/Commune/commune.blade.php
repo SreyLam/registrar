@@ -40,7 +40,7 @@
 
         $(document).ready(function(){
 
-            $('#dt_basic').DataTable({
+            let oTable = $('#dt_basic').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -72,11 +72,8 @@
                     confirmButtonText: 'Yes, delete it!'
                 },function(){
                         $.ajax({
-                            type: 'get',
-                            url: '/admin/delete_comm',
-                            data: {
-                                'commune_id': commune_id
-                            },
+                            type: 'GET',
+                            url: '/admin/'+commune_id+'/delete_comm',
                             success: function(response){
                                 if(response.status == true){
                                     swal(
@@ -84,8 +81,7 @@
                                         'Your file has been deleted.',
                                         'success'
                                     )
-
-                                    dom.remove();
+                                    oTable.draw(true);
                                 }
                             }
                         })

@@ -66,7 +66,7 @@
             $( document ).on( "click", '.delete-lettertype' , function(e) {
                 e.preventDefault();
                 var lettertype_id = $(this).find('.lettertype_id').val();
-                var dom = $(this).parent().parent().parent();
+                var dom = $(this).parent().parent();
                 swal({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",

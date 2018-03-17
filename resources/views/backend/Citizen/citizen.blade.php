@@ -40,7 +40,7 @@
                 {{--<a href="{{ url('admin/add_citizen') }}" class="btn btn-success " style="margin-left:10%"><i class="fa fa-plus"></i> បញ្ជូលព័ត៍មានប្រជាជន</a>--}}
                 {{--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>--}}
         {{--</div><!-- /.box-header -->--}}
-        <dr class="box-body">
+        <div class="box-body">
 
             {{--<div class="table-responsive"></div></dr>--}}
             {{--<a href="{{ url('admin/import_citizen') }}" class="btn btn-success " style="margin-bottom:1%"><i class="fa fa-plus"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a></dr>--}}
@@ -89,7 +89,7 @@
 
         $(document).ready(function(){
 
-            $('#dt_basic').DataTable({
+            let oTable = $('#dt_basic').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -105,7 +105,7 @@
                     {data: 'name', name: 'name', sortable: false},
                     {data: 'father_name', name: 'father_name', sortable: false},
                     {data: 'mother_name', name: 'mother_name', sortable: false},
-                    {data: 'date_birth', name: 'date_birth', sortable: false},
+                    {data: 'date_birth', name: 'date_birth'},
                     {data: 'child_order', name: 'child_order'},
                     {data: 'gender_id', name: 'gender_id', sortable: true},
                     {data: 'year', name: 'year'},
@@ -146,7 +146,7 @@
                                     'success'
                                 )
 
-                                dom.remove();
+                                oTable.draw(true);
                             }
                         }
                     })
@@ -154,6 +154,9 @@
             });
         });
 
+
     </script>
+
+
 
 @endsection

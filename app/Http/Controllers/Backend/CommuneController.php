@@ -35,8 +35,8 @@ class CommuneController extends Controller
                 foreach (auth()->user()->roles as $role){
                     if ($role->id == 1){
 
-                        $action .= '<button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
-                                <input type="hidden" class="citizen_id" value="' . $commune->id . '">
+                        $action .= '<button type="button" class="btn btn-xs btn-danger delete-commune" aria-label="Left Align">
+                                <input type="hidden" class="commune_id" value="' . $commune->id . '">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                             </button>';
 
@@ -66,10 +66,12 @@ class CommuneController extends Controller
         return view('backend.Commune.commune', compact('commune'));
     }
 
-    public function getDelete()
+    public function getDelete($commune_id)
     {
-        $commune = DB::table('communes')->where('id', \request('commune_id'))->delete();
-        if ($commune) {
+        $commune = Commune::find($commune_id);
+
+        if ($commune instanceof Commune) {
+            $commune->delete();
             return Response::json(['status' => true]);
         } else {
             return Response::json(['status' => false]);

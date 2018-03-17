@@ -120,20 +120,23 @@
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <?php
 
-                                                        if($citizen->images){
-                                                            $images = $citizen->images;
-                                                        }
-                                                        ?>
                                                         <div class=" col-md-6">
                                                             {{Form::label('image','Input Image')}}
-                                                            @foreach($images as $image)
-                                                                <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image" width="100%" height="100%" />
-                                                            @endforeach
+                                                            <?php
+
+                                                            if(count($citizen->images)>0){
+                                                                $images = $citizen->images;
+                                                            }
+                                                            ?>
+                                                            @if(isset($images) && count($images)>0)
+                                                                @foreach($images as $image)
+                                                                    <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image" width="100%" height="100%" />
+                                                                    {{Form::hidden('imageHidden', $image->image, array('class'=>'form-control col-md-3'))}}
+                                                                @endforeach
+                                                            @endif
                                                             <img src="{{URL::to('/')}}/img/" alt="image" class="img-thumbnail" width="100%" height="100%" />
                                                             {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
-                                                            {{Form::hidden('imageHidden', $image->image, array('class'=>'form-control col-md-3'))}}
                                                         </div>
                                                         <div class="clearfix">&nbsp;</div>
                                                     </div>
