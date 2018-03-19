@@ -309,6 +309,8 @@ class CitizenController extends Controller
 
                     $commune = Commune::where('number', $v['commune_number'])->first();
                     $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
+//                    $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
+                    dd($lettertype);
                     $gender = Gender::where('gender_name', $v['gender'])->first();
                     if (!empty($v)) {
 
