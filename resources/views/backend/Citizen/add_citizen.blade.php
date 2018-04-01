@@ -36,11 +36,11 @@
                                         {{--<div class="clearfix">&nbsp;</div>--}}
 
                                         {{Form::label('number_list', 'លេខបញ្ជី')}}
-                                        {{Form::text('number_list', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខបញ្ជី !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('number_list', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខបញ្ជី ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('number_book', 'លេខសៀវភៅ')}}
-                                        {{Form::text('number_book', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខសៀវភៅ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('number_book', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខសៀវភៅ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         <label>លេខកូដសំបុត្រ</label>
@@ -55,21 +55,21 @@
                                         {{--<div class="clearfix">&nbsp;</div>--}}
 
                                         {{Form::label('name', 'ឈ្មេាះសាមុីខ្លូន')}}
-                                        {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('father_name', 'ឈ្មេាះឪពុក')}}
-                                        {{Form::text('father_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឲពុក !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('father_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឪពុក ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('mother_name', 'ឈ្មេាះម្ដាយ')}}
-                                        {{Form::text('mother_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('mother_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         <div class="row"  style="margin-inside: 0px;">
                                             <div class="row"  style="margin-left: 0px;">
                                                 <div class="col-md-6">
-                                                    {{Form::label('date_birth', 'ថ្ងៃខែឆ្នាំកំនើត')}}
+                                                    {{Form::label('date_birth', 'ថ្ងៃខែឆ្នាំកំណើត')}}
                                                     <div class='input-group date' id='datetimepicker1'>
                                                         <input class="form-control" name="date_birth" />
                                                         <span class="input-group-addon">
@@ -82,7 +82,7 @@
 
                                                 <div class="col-md-6">
                                                     {{Form::label('child_order', 'កូនទី')}}
-                                                    {{Form::text('child_order', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}
+                                                    {{Form::text('child_order', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'សូមបញ្ជូលលំដាប់កូន','data-dateformat'=>'yy/mm/dd'])}}
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -125,20 +125,20 @@
                                         <div class="col-md-6">
 
 
-                                        {{Form::label('place_birth', 'ទីកន្លែងកំនើត')}}
-                                        {{Form::textarea('place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើត !', 'id'=>'inputTextArea'])}}
+                                        {{Form::label('place_birth', 'ទីកន្លែងកំណើត')}}
+                                        {{Form::textarea('place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត ', 'id'=>'inputTextArea'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('f_place_birth', 'ទីកន្លែងកំនើតឪពុក')}}
-                                        {{Form::textarea('f_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតឲពុក !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('f_place_birth', 'ទីកន្លែងកំណើតឪពុក')}}
+                                        {{Form::textarea('f_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតឪពុក', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('m_place_birth', 'ទីកន្លែងកំនើតម្ដាយ')}}
-                                        {{Form::textarea('m_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតម្ដាយ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('m_place_birth', 'ទីកន្លែងកំណើតម្ដាយ')}}
+                                        {{Form::textarea('m_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតម្ដាយ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('other', 'ព័ត៍រមានផ្សេង')}}
-                                        {{Form::textarea('other', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលពត័រមានផ្សេង !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('other', 'ព័ត៍មានផ្សេងៗ')}}
+                                        {{Form::textarea('other', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលព័ត៏័មានផ្សេងៗ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
                                         </div>
 

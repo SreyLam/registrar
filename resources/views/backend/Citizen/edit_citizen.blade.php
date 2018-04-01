@@ -39,11 +39,11 @@
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('number_list', 'លេខបញ្ជី')}}
-                                        {{Form::text('number_list', $citizen->number_list, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខបញ្ជី !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('number_list', $citizen->number_list, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខបញ្ជី ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('number_book', 'លេខសៀវភៅ')}}
-                                        {{Form::text('number_book', $citizen->number_book, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខសៀវភៅ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('number_book', $citizen->number_book, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខសៀវភៅ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('lettertype_id', 'លេខកូដសំបុត្រ')}}
@@ -61,7 +61,7 @@
                                         {{--{{Form::text('lettertype_id', $citizen->lettertype_id, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}--}}
                                         {{--<div class="clearfix">&nbsp;</div>--}}
 
-                                        {{Form::label('name', 'ឈ្មេាះសាមីខ្លូន')}}
+                                        {{Form::label('name', 'ឈ្មេាះសាមុីខ្លូន')}}
                                         {{Form::text('name', $citizen->name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះសាមីខ្លូន !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     {{Form::label('child_order', 'កូនទី')}}
-                                                    {{Form::text('child_order', $citizen->child_order, ['class'=>'form-control datetimepicker9', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}
+                                                    {{Form::text('child_order', $citizen->child_order, ['class'=>'form-control datetimepicker9', 'required', 'placeholder'=>'','data-dateformat'=>'yy/mm/dd'])}}
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
                                                 <div class="row" style="margin-left: 0px; float: left">
@@ -106,7 +106,7 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        {{Form::label('year', 'ធ្នាំ')}}
+                                                        {{Form::label('year', 'ឆ្នាំ')}}
                                                         <div class='input-group date' id='datetimepicker9'>
                                                             <input type='text' class="form-control" name="year" value="{{ $citizen->year }}"/>
                                                             <span class="input-group-addon">
@@ -149,20 +149,20 @@
                                     <div class="col-md-6">
 
 
-                                        {{Form::label('place_birth', 'ទីកន្លែងកំនើត')}}
-                                        {{Form::textarea('place_birth', $citizen->place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើត !', 'id'=>'inputTextArea'])}}
+                                        {{Form::label('place_birth', 'ទីកន្លែងកំណើត')}}
+                                        {{Form::textarea('place_birth', $citizen->place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត', 'id'=>'inputTextArea'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('f_place_birth', 'ទីកន្លែងកំណើតឪពុក')}}
-                                        {{Form::textarea('f_place_birth', $citizen->f_place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតឲពុក !', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('f_place_birth', $citizen->f_place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតឪពុក', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('m_place_birth', 'ទីកន្លែងកំណើតម្ដាយ')}}
-                                        {{Form::textarea('m_place_birth', $citizen->m_place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំនើតម្ដាយ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('m_place_birth', $citizen->m_place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតម្ដាយ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        {{Form::label('other', 'ព័ត៍មានផ្សេង')}}
-                                        {{Form::textarea('other', $citizen->other, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលពត័រមានផ្សេង !', 'id'=>'inputTextBox'])}}
+                                        {{Form::label('other', 'ព័ត៍មានផ្សេងៗ')}}
+                                        {{Form::textarea('other', $citizen->other, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលព័ត៏មានផ្សេងៗ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
                                     </div>
 

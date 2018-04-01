@@ -5,7 +5,7 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('គ្រប់គ្រងប្រភេទសំបុត្រ!') }}</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រងប្រភេទសំបុត្រ') }}</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
@@ -25,10 +25,10 @@
 
 
                                         {{Form::label('number', 'លេខកូដសំបុត្រ')}}
-                                        {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈលេខសំបុត្រ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខសំបុត្រ', 'id'=>'inputTextBox'])}}
 
                                         {{Form::label('name', 'ឈ្មេាះសំបុត្រ')}}
-                                        {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមជ្រើសរើសឈ្មេាះមេសំបុត្រ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មោះសំបុត្រ', 'id'=>'inputTextBox'])}}
 
 
                                     </div>

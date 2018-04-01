@@ -267,7 +267,7 @@ class CitizenController extends Controller
             $citizen_tmp['ទីកន្លែងកំណើត'] = $citizen_item['place_birth'];
             $citizen_tmp['ទីកន្លែងកំណើតឪពុក'] = $citizen_item['f_place_birth'];
             $citizen_tmp['ទីកន្លែងកំណើតម្ដាយ'] = $citizen_item['m_place_birth'];
-            $citizen_tmp['ព័ត៍មានផ្សែង'] = $citizen_item['other'];
+            $citizen_tmp['ព័ត៍មានផ្សេងៗ'] = $citizen_item['other'];
 
 
 

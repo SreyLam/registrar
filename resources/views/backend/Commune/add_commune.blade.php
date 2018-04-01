@@ -23,10 +23,10 @@
                                         {{Form::hidden('id_product', @$commune->id, ['class'=>'form-control'])}}
 
                                         {{Form::label('number', 'លេខកូដឃុំ')}}
-                                        {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ', 'id'=>'inputTextBox'])}}
 
                                         {{Form::label('name', 'ឈ្មេាះឃុំ')}}
-                                        {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឃុំ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះឃុំ', 'id'=>'inputTextBox'])}}
 
 
                                     </div>
