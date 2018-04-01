@@ -9,7 +9,7 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('គ្រប់គ្រង់អត្រានុកូលដ្ឋាន') }}​</h3>
+            <h3 class="box-title">{{ trans('គ្រប់គ្រងអត្រានុកូលដ្ឋាន') }}​</h3>
             <div class="box-tools pull-right">
                 <div class="pull-right mb-10 hidden-sm hidden-xs">
 
