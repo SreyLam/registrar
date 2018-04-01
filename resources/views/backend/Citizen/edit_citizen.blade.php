@@ -135,7 +135,8 @@
                                                                     {{Form::hidden('imageHidden', $image->image, array('class'=>'form-control col-md-3'))}}
                                                                 @endforeach
                                                             @endif
-                                                            <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120%" height="120%" />
+                                                            <div class="clearfix">&nbsp;</div>
+                                                            <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
                                                             {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
                                                         </div>
                                                         <div class="clearfix">&nbsp;</div>

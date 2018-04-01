@@ -38,13 +38,13 @@ class CitizenController extends Controller
         $citizens = Citizen::select('*')->with('commune', 'lettertype', 'gender_cityzen')->get();
 
         return Datatables::of($citizens)
-            ->editColumn('commune_id', function ($citizen) {
+            ->addColumn('commune', function ($citizen) {
                 return $citizen->commune->number;
             })
-            ->editColumn('lettertype_id', function ($citizen) {
+            ->addColumn('lettertype', function ($citizen) {
                 return $citizen->lettertype->number;
             })
-            ->editColumn('gender_id', function ($citizen) {
+            ->addColumn('gender', function ($citizen) {
                 return $citizen->gender_cityzen->gender_name;
             })
             ->editColumn('date_birth', function ($citizen) {
@@ -53,7 +53,7 @@ class CitizenController extends Controller
                     convert_date_khmer((new Carbon($citizen->date_birth))->year). ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()).'ឆ្នាំ)</strong>';
             })
             ->editColumn('year', function ($citizen) {
-                return convert_date_khmer($citizen->year);
+                return $citizen->year;
 
             })
             ->addColumn('actions', function ($citizen) {
@@ -97,7 +97,8 @@ class CitizenController extends Controller
         $newCitzen->date_birth = \request()->date_birth;
         $newCitzen->child_order = \request()->child_order;
         $newCitzen->gender_id = \request()->gender;
-        $newCitzen->year = \request()->year;
+//        $newCitzen->year = \request()->year;
+        $newCitzen->year = convert_khmer_day(\request()->year);
         $newCitzen->place_birth = \request()->place_birth;
         $newCitzen->f_place_birth = \request()->f_place_birth;
         $newCitzen->m_place_birth = \request()->m_place_birth;
@@ -262,7 +263,7 @@ class CitizenController extends Controller
             $citizen_tmp['ថ្ងៃខែឆ្នាំកំណើត'] = $tmp_date_birth;
             $citizen_tmp['កូនទី'] = $citizen_item['child_order'];
             $citizen_tmp['ភេទ'] = $tmp_gender;
-            $citizen_tmp['ឆ្នាំ'] = $tmp_year;
+            $citizen_tmp['ឆ្នាំ'] = $citizen_item['year'];
             $citizen_tmp['ទីកន្លែងកំណើត'] = $citizen_item['place_birth'];
             $citizen_tmp['ទីកន្លែងកំណើតឪពុក'] = $citizen_item['f_place_birth'];
             $citizen_tmp['ទីកន្លែងកំណើតម្ដាយ'] = $citizen_item['m_place_birth'];
@@ -301,16 +302,14 @@ class CitizenController extends Controller
 
             if (!empty($data)) {
 
-
-                $insert = [];
-
-
                 foreach ($data->toArray() as $key => $v) {
 
                     $commune = Commune::where('number', $v['commune_number'])->first();
+
                     $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
+//                    dd($lettertype);
 //                    $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
-                    dd($lettertype);
+//                    dd($lettertype);
                     $gender = Gender::where('gender_name', $v['gender'])->first();
                     if (!empty($v)) {
 
@@ -318,14 +317,12 @@ class CitizenController extends Controller
                             'commune_id' => $commune->id,
                             'number_list' => $v['number_list'],
                             'number_book' => $v['number_book'],
-//                            'lettertype_id' => $v['lettertpe_id'],
                             'lettertype_id' => $lettertype->id,
                             'name' => $v['name'],
                             'father_name' => $v['father_name'],
                             'mother_name' => $v['mother_name'],
                             'date_birth' => $v['date_birth'],
                             'child_order' => $v['child_order'],
-//                            'gender_id' => $v['gender_id'],
                             'gender_id' => $gender->id,
                             'year' => $v['year'],
                             'place_birth' => $v['place_birth'],
@@ -333,7 +330,9 @@ class CitizenController extends Controller
                             'm_place_birth' => $v['m_place_birth'],
                             'other' => $v['other']
                         ];
+
                     }
+//                    dd($insert);
 
                     if (!empty($insert)) {
                         Citizen::insert($insert);
@@ -354,27 +353,6 @@ class CitizenController extends Controller
 
         return back()->with('error', 'Please Check your file, Something is wrong there.');
     }
-
-
-
-
-
-//    public function search()
-//    {
-//        $citizen = Citizen::when($filters['id'], function ($query) use ($filters) {
-//            return $query->where('id', 'LIKE', '%' . $filters['id'] . '%');
-//        })
-//            ->when($filters['date_birth'], function ($query) use ($filters) {
-//                return $query->where('first_name', 'LIKE', '%' . $filters['name'] . '%')
-//                    ->orWhere('last_name', 'LIKE', '%' . $filters['name'] . '%');
-//            })
-//            ->when($filters['email'], function ($query) use ($filters) {
-//                return $query->where('email', 'LIKE', '%' . $filters['email'] . '%');
-//            })
-//            ->get();
-//
-//
-//    }
 
     public function getPrint_image($id)
     {

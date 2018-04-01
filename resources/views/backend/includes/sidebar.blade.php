@@ -30,12 +30,12 @@
         <ul class="sidebar-menu">
             {{--<li class="header">{{ trans('menus.backend.sidebar.general') }}</li>--}}
 
-            <li class="{{ Active::pattern('admin/dashboard') }}">
-                <a href="{{ route('admin.dashboard') }}">
-                    <i class="fa fa-dashboard"></i>
-                    <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
-                </a>
-            </li>
+            {{--<li class="{{ Active::pattern('admin/dashboard') }}">--}}
+                {{--<a href="{{ route('admin.citizen') }}">--}}
+                    {{--<i class="fa fa-dashboard"></i>--}}
+                    {{--<span>{{ trans('menus.backend.sidebar.dashboard') }}</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <li class="{{ Active::pattern('admin/commune') }}">
                 <a href="{{ route('admin.commune') }}">
                     <i class="fa fa-dashboard"></i>
