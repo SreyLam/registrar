@@ -52,6 +52,18 @@ class CitizenController extends Controller
                     convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
                     convert_date_khmer((new Carbon($citizen->date_birth))->year). ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()).'ឆ្នាំ)</strong>';
             })
+            ->editColumn('f_dob', function ($citizen) {
+                return convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
+                    convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
+                    convert_date_khmer((new Carbon($citizen->f_dob))->year);
+            })
+
+            ->editColumn('m_dob', function ($citizen) {
+                return convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
+                    convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
+                    convert_date_khmer((new Carbon($citizen->m_dob))->year);
+            })
+
             ->editColumn('year', function ($citizen) {
                 return $citizen->year;
 
@@ -86,6 +98,7 @@ class CitizenController extends Controller
 
     public function storeCitizen()
     {
+
         $newCitzen = new Citizen();
         $newCitzen->commune_id = \request()->commune_id;
         $newCitzen->number_list = \request()->number_list;
@@ -101,28 +114,34 @@ class CitizenController extends Controller
         $newCitzen->year = convert_khmer_day(\request()->year);
         $newCitzen->place_birth = \request()->place_birth;
         $newCitzen->f_place_birth = \request()->f_place_birth;
+        $newCitzen->f_dob = \request()->f_dob;
         $newCitzen->m_place_birth = \request()->m_place_birth;
+        $newCitzen->m_dob = \request()->m_dob;
         $newCitzen->other = \request()->other;
         $newCitzen->created_at = Carbon::now();
         $newCitzen->updated_at = Carbon::now();
 
         if ($newCitzen->save()) {
             if (\request()->hasFile('citizen_image')) {
-                $newImage = new Image();
-                $newImage->imageable_id = $newCitzen->id;
-                $newImage->imageable_type = Citizen::class;
 
-                $file = Input::file('citizen_image');
-                $destinationPath = public_path('img/backend/citizen');
-                $filename = time() . '' . '.' . $file->getClientOriginalExtension();
 
-                $file->move($destinationPath, $filename);
+                $files = Input::file('citizen_image');
+//                dd($files);
+                foreach ($files as $file) {
+                    $newImage = new Image();
+                    $newImage->imageable_id = $newCitzen->id;
+                    $newImage->imageable_type = Citizen::class;
+                    $destinationPath = public_path('img/backend/citizen');
+                    $filename = time() . '' . '.' . $file->getClientOriginalExtension();
 
-                $newImage->image_src = $filename;
+                    $file->move($destinationPath, $filename);
 
-                //dd($newImage);
+                    $newImage->image_src = $filename;
+//                    $newImage->citizen_image[] = $filename;
+                    //dd($newImage);
 
-                $newImage->saveOrFail();
+                    $newImage->save();
+                }
             }
         }
 
@@ -185,7 +204,9 @@ class CitizenController extends Controller
             'year' => $input['year'],
             'place_birth' => $input['place_birth'],
             'f_place_birth' => $input['f_place_birth'],
+            'f_dob' => $input['f_dob'],
             'm_place_birth' => $input['m_place_birth'],
+            'm_dob' => $input['m_dob'],
             'other' => $input['other'],
         ));
 
@@ -194,16 +215,23 @@ class CitizenController extends Controller
 
             $newImage->imageable_id = $id;
             $newImage->imageable_type = Citizen::class;
-            $file = Input::file('citizen_image');
-            $destinationPath = public_path('img/backend/citizen');
-            $filename = time() . '' . '.' . $file->getClientOriginalExtension();
+            $files = Input::file('citizen_image');
+            foreach ($files as $file) {
 
-            $file->move($destinationPath, $filename);
-
-            $newImage->image_src = $filename;
+                $destinationPath = public_path('img/backend/citizen');
 
 
-            $newImage->saveOrFail();
+                $filename = time() . '' . '.' . $file->getClientOriginalExtension();
+
+                $file->move($destinationPath, $filename);
+
+                $newImage->image_src = $filename;
+
+                $newImage->citizen_image[] = $filename;
+
+
+                $newImage->saveOrFail();
+            }
 
 //            dd($newImage);
         }
@@ -243,6 +271,15 @@ class CitizenController extends Controller
                 convert_date_khmer((new Carbon($citizen->date_birth))->year);
 
 
+            $tmp_f_dob = convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
+                convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
+                convert_date_khmer((new Carbon($citizen->f_dob))->year);
+
+
+            $tmp_m_dob = convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
+                convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
+                convert_date_khmer((new Carbon($citizen->m_dob))->year);
+
             $tmp_year = convert_khmer_day($citizen->year);
 
 
@@ -251,21 +288,23 @@ class CitizenController extends Controller
 
 
             $citizen_item = Citizen::where('id', $citizen->id)->select('number_list', 'number_book','lettertype_id', 'name', 'father_name', 'mother_name','date_birth', 'child_order','gender_id','year', 'place_birth'
-                , 'f_place_birth', 'm_place_birth', 'other')->first()->toArray();
+                , 'f_place_birth','f_dob', 'm_place_birth','m_dob', 'other')->first()->toArray();
 
             $citizen_tmp['លេខកូដឃុំ'] = $tmp;
             $citizen_tmp['លេខបញ្ជី'] = $citizen_item['number_list'];
             $citizen_tmp['លេខសៀវភៅ'] = $citizen_item['number_book'];
             $citizen_tmp['លេខកូដសំបុត្រ'] = $tmp_letter_type;
+            $citizen_tmp['ឆ្នាំ'] = $citizen_item['year'];
             $citizen_tmp['ឈ្មោះសាមីខ្លូន'] = $citizen_item['name'];
-            $citizen_tmp['ឈ្មោះឪពុក'] = $citizen_item['father_name'];
-            $citizen_tmp['ឈ្មោះម្ដាយ'] = $citizen_item['mother_name'];
-            $citizen_tmp['ថ្ងៃខែឆ្នាំកំណើត'] = $tmp_date_birth;
             $citizen_tmp['កូនទី'] = $citizen_item['child_order'];
             $citizen_tmp['ភេទ'] = $tmp_gender;
-            $citizen_tmp['ឆ្នាំ'] = $citizen_item['year'];
+            $citizen_tmp['ថ្ងៃខែឆ្នាំកំណើត'] = $tmp_date_birth;
             $citizen_tmp['ទីកន្លែងកំណើត'] = $citizen_item['place_birth'];
+            $citizen_tmp['ឈ្មោះឪពុក'] = $citizen_item['father_name'];
+            $citizen_tmp['ថ្ងៃខែឆ្នាំកំណើតឪពុក'] = $tmp_f_dob;
             $citizen_tmp['ទីកន្លែងកំណើតឪពុក'] = $citizen_item['f_place_birth'];
+            $citizen_tmp['ឈ្មោះម្ដាយ'] = $citizen_item['mother_name'];
+            $citizen_tmp['ថ្ងៃខែឆ្នាំកំណើតម្ដាយ'] = $tmp_m_dob;
             $citizen_tmp['ទីកន្លែងកំណើតម្ដាយ'] = $citizen_item['m_place_birth'];
             $citizen_tmp['ព័ត៍មានផ្សេងៗ'] = $citizen_item['other'];
 
@@ -312,21 +351,23 @@ class CitizenController extends Controller
 //                    dd($lettertype);
                     $gender = Gender::where('gender_name', $v['gender'])->first();
                     if (!empty($v)) {
-
+//dd($v);
                         $insert = [
                             'commune_id' => $commune->id,
                             'number_list' => $v['number_list'],
                             'number_book' => $v['number_book'],
                             'lettertype_id' => $lettertype->id,
+                            'year' => $v['year'],
                             'name' => $v['name'],
-                            'father_name' => $v['father_name'],
-                            'mother_name' => $v['mother_name'],
-                            'date_birth' => $v['date_birth'],
                             'child_order' => $v['child_order'],
                             'gender_id' => $gender->id,
-                            'year' => $v['year'],
+                            'date_birth' => $v['date_birth'],
                             'place_birth' => $v['place_birth'],
+                            'father_name' => $v['father_name'],
+                            'f_dob' => $v['f_dob'],
                             'f_place_birth' => $v['f_place_birth'],
+                            'mother_name' => $v['mother_name'],
+                            'm_dob' => $v['m_dob'],
                             'm_place_birth' => $v['m_place_birth'],
                             'other' => $v['other']
                         ];

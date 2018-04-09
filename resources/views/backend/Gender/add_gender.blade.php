@@ -18,25 +18,33 @@
                             <div class="x_content">
                                 <div class="row">
                                     {{--Left Form--}}
-                                    <div class="col-md-12 col-md-offset-3">
+                                    <div class="col-md-6 col-md-offset-3 ">
                                         {{Form::hidden('id', @$gender->id, ['class'=>'form-control'])}}
 
 
                                         {{Form::label('gender_name', 'ភេទ')}}
-                                        {{Form::text('gender_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះភេទ !', 'id'=>'inputTextBox'])}}
-
+                                        {{Form::text('gender_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះភេទ', 'id'=>'inputTextBox'])}}
 
 
                                     </div>
                                 </div>
 
                                 <div class="row" style="margin-top: 10px;">
-                                    <div class="col-md-12 col-md-offset-3">
-                                        <div class="form-group">
+
+                                    <div class="col-md-12">
+                                        <div class="pull-left">
+
+                                            <a href="/admin/gender" class="btn btn-danger btn-xm">ថយក្រោយ</a>
+
+                                        </div>
+
+                                        <div class="pull-right">
+
                                             <button type="submit" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-save"></i> បញ្ជូន
                                             </button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -105,6 +105,26 @@
                                                                 </span>
                                                         </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    {{Form::label('f_dob', 'ថ្ងៃខែឆ្នាំកំណើតឪពុក')}}
+                                                    <div class='input-group date' id='datetimepicker2'>
+                                                        <input class="form-control" name="f_dob" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    {{Form::label('m_dob', 'ថ្ងៃខែឆ្នាំកំណើតម្ដាយ')}}
+                                                    <div class='input-group date' id='datetimepicker3'>
+                                                        <input class="form-control" name="m_dob" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
 
                                                 <div class=" col-md-6">
                                                     {{Form::label('image','បញ្ជូលរូបភាព')}}
@@ -112,7 +132,7 @@
                                                     <img src="{{URL::to('/')}}/img/" alt="image" class="img-thumbnail" width="100%" height="100%" />
 
                                                     {{--<input type="file" class="form-control" id="filechoose" style="display:none" accept="image/*" name="citizen_image"/>--}}
-                                                    {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;', 'accept' => 'image/*', 'name' => 'citizen_image'])}}
+                                                    {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;', 'accept' => 'image/*', 'name' => 'citizen_image[]','multiple'])}}
 
 
                                                 </div>
@@ -130,15 +150,15 @@
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('f_place_birth', 'ទីកន្លែងកំណើតឪពុក')}}
-                                        {{Form::textarea('f_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតឪពុក', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('f_place_birth', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតឪពុក', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('m_place_birth', 'ទីកន្លែងកំណើតម្ដាយ')}}
-                                        {{Form::textarea('m_place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតម្ដាយ', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('m_place_birth', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតម្ដាយ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('other', 'ព័ត៍មានផ្សេងៗ')}}
-                                        {{Form::textarea('other', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលព័ត៏័មានផ្សេងៗ', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('other', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលព័ត៏័មានផ្សេងៗ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
                                         </div>
 
@@ -146,11 +166,25 @@
 
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-12 text-right">
-                                        <div class="form-group">
+                                        <div class="pull-left">
+
+                                            <a href="/admin/citizen" class="btn btn-danger btn-sm">ថយក្រោយ</a>
+
+                                        </div>
+
+                                        <div class="pull-right">
+
                                             <button type="submit" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-save"></i> បញ្ជូន
                                             </button>
                                         </div>
+
+
+                                        {{--<div class="form-group">--}}
+                                            {{--<button type="submit" class="btn btn-primary btn-sm">--}}
+                                                {{--<i class="fa fa-save"></i> បញ្ជូន--}}
+                                            {{--</button>--}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -177,6 +211,13 @@
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker1').datetimepicker({
+                locale: 'km',
+                format: 'YYYY-MM-DD'
+            });
+            $('#datetimepicker2').datetimepicker({
+                locale: 'km',
+                format: 'YYYY-MM-DD'
+            }); $('#datetimepicker3').datetimepicker({
                 locale: 'km',
                 format: 'YYYY-MM-DD'
             });

@@ -7,7 +7,7 @@ function convert_khmer_month($month)
             return 'មករា';
             break;
         case 2:
-            return 'កុម្ភះ';
+            return 'កុម្ភៈ';
             break;
         case 3:
             return 'មិនា';
@@ -16,10 +16,10 @@ function convert_khmer_month($month)
             return 'មេសា';
             break;
         case 5:
-            return 'ឪសភា';
+            return 'ឧសភា';
             break;
         case 6:
-            return 'មិថុណា';
+            return 'មិថុនា';
             break;
         case 7:
             return 'កក្ដដា';
@@ -37,7 +37,7 @@ function convert_khmer_month($month)
             return 'វិច្ឆិកា';
             break;
         case 12:
-            return 'ធ្នូរ';
+            return 'ធ្នូ';
             break;
         default:
             return '';

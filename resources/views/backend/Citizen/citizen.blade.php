@@ -55,16 +55,17 @@
                         <th>លេខបញ្ជី</th>
                         <th>លេខសៀវភៅ</th>
                         <th>លេខកូដសំបុត្រ</th>
+                        <th>ឆ្នាំ</th>
                         <th>ឈ្មេាះសាមុីខ្លូន</th>
-                        <th>ឈ្មេាះឪពុក</th>
-                        <th>ឈ្មេាះម្ដាយ</th>
-                        <th style="width: 20%">ថ្ងៃខែឆ្នាំកំណើត</th>
                         <th>កូនទី</th>
                         <th>ភេទ</th>
-                        <th>ឆ្នាំ</th>
+                        <th style="width: 20%">ថ្ងៃខែឆ្នាំកំណើត</th>
                         <th>ទីកន្លែងកំណើត</th>
+                        <th>ឈ្មេាះឪពុក</th>
+                        {{--<th>ថ្ងៃខែឆ្នាំកំណើតឪពុក</th>--}}
                         {{--<th>ទីកន្លែងកំណើតឪពុក</th>--}}
-                        {{--<th>ទីកន្លែងកំណើតម្ដាយ</th>--}}
+                        <th>ឈ្មេាះម្ដាយ</th>
+                        {{--<th>ថ្ងៃខែឆ្នាំកំណើតម្ដាយ</th>--}}
                         {{--<th>ព័ត៍មានផ្សេងៗ</th>--}}
                         {{--<th>រូបភាព</th>--}}
                         <th>សកម្មភាព</th>
@@ -102,15 +103,17 @@
                     {data: 'number_list', name: 'number_list'},
                     {data: 'number_book', name: 'number_book'},
                     {data: 'lettertype', name: 'lettertype.number'},
+                    {data: 'year', name: 'year'},
                     {data: 'name', name: 'name'},
-                    {data: 'father_name', name: 'father_name'},
-                    {data: 'mother_name', name: 'mother_name'},
-                    {data: 'date_birth', name: 'date_birth'},
                     {data: 'child_order', name: 'child_order'},
                     {data: 'gender', name: 'gender_cityzen.gender_name', sortable: true},
-                    {data: 'year', name: 'year'},
+                    {data: 'date_birth', name: 'date_birth'},
                     {data: 'place_birth', name: 'place_birth', sortable: false},
+                    {data: 'father_name', name: 'father_name'},
+//                    {data: 'f_dob', name: 'f_dob'},
 //                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
+                    {data: 'mother_name', name: 'mother_name'},
+//                    {data: 'm_dob', name: 'm_dob'},
 //                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
 //                    {data: 'other', name: 'other', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}

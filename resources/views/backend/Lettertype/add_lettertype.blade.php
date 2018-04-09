@@ -36,12 +36,25 @@
 
 
                                 <div class="row" style="margin-top: 10px;">
-                                    <div class="col-md-12 col-md-offset-3">
-                                        <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="pull-left">
+
+                                            <a href="/admin/lettertype" class="btn btn-danger btn-sm">ថយក្រោយ</a>
+
+                                        </div>
+
+                                        <div class="pull-right">
+
                                             <button type="submit" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-save"></i> បញ្ជូន
                                             </button>
                                         </div>
+
+                                        {{--<div class="form-group">--}}
+                                            {{--<button type="submit" class="btn btn-primary btn-sm">--}}
+                                                {{--<i class="fa fa-save"></i> បញ្ជូន--}}
+                                            {{--</button>--}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
                             </div>
