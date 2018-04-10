@@ -127,12 +127,12 @@ class CitizenController extends Controller
 
                 $files = Input::file('citizen_image');
 //                dd($files);
-                foreach ($files as $file) {
+                foreach ($files as $index => $file) {
                     $newImage = new Image();
                     $newImage->imageable_id = $newCitzen->id;
                     $newImage->imageable_type = Citizen::class;
                     $destinationPath = public_path('img/backend/citizen');
-                    $filename = time() . '' . '.' . $file->getClientOriginalExtension();
+                    $filename = $index.time() . '' . '.' . $file->getClientOriginalExtension();
 
                     $file->move($destinationPath, $filename);
 

@@ -4,6 +4,31 @@
 
     <link rel="stylesheet" href="{{ asset('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
 
+    <style>
+        .citizen-image {
+            position: relative;
+            width: 50%;
+        }
+
+        /* Make the image responsive */
+        .citizen-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Style the button and place it in the middle of the container/image */
+        .citizen-image .btn {
+            position: absolute;
+            top: 90%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+
 @endsection
 
 @section('content')
@@ -119,27 +144,22 @@
                                                 </div>
 
                                                 <div class="row">
+                                                    {{Form::label('image','រូបភាព')}}
+                                                    @if(isset($citizen->images) && count($citizen->images)>0)
+                                                        @foreach($citizen->images as $image)
+                                                            <div class=" col-md-6 citizen-image">
+                                                                <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image"/>
+                                                                <button class="btn btn-danger btn-sm delete-citizen-image"><i class="fa fa-trash"></i></button>
+                                                                {{Form::hidden('imageHidden', $image->id, array('class'=>'form-control col-md-3 citizen-image-id', 'name'=> 'citizen-image-id'))}}
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+
+                                                <div class="row">
                                                     <div class="col-md-6">
-
-                                                        <div class=" col-md-6">
-                                                            {{Form::label('image','រូបភាព')}}
-                                                            <?php
-
-                                                            if(count($citizen->images)>0){
-                                                                $images = $citizen->images;
-                                                            }
-                                                            ?>
-                                                            @if(isset($images) && count($images)>0)
-                                                                @foreach($images as $image)
-                                                                    <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image" width="120%" height="120%" />
-                                                                    {{Form::hidden('imageHidden', $image->image, array('class'=>'form-control col-md-3'))}}
-                                                                @endforeach
-                                                            @endif
-                                                            <div class="clearfix">&nbsp;</div>
-                                                            <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
-                                                            {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
-                                                        </div>
-                                                        <div class="clearfix">&nbsp;</div>
+                                                        <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
+                                                        {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -223,6 +243,10 @@
                 viewMode: 'years',
                 format: 'YYYY'
             });
+
+            $(document).on("click", "delete-citizen-image", function(){
+                console.log($(this).siblings('.citizen-image-id').val())
+            })
         });
 
         /* click finde image*/
