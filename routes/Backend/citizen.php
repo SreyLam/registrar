@@ -19,3 +19,4 @@ Route::post('importExcel', 'CitizenController@importExcel');
 
 Route::get('/', 'CitizenController@search');
 Route::get('images/{id}/print_image', 'CitizenController@getPrint_image');
+Route::post('images/delete_image', 'CitizenController@delete_image')->name('citizen.delete_image');
