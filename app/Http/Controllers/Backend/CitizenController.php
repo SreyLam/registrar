@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -50,20 +51,18 @@ class CitizenController extends Controller
             ->editColumn('date_birth', function ($citizen) {
                 return convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
                     convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
-                    convert_date_khmer((new Carbon($citizen->date_birth))->year). ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()).'ឆ្នាំ)</strong>';
+                    convert_date_khmer((new Carbon($citizen->date_birth))->year) . ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()) . 'ឆ្នាំ)</strong>';
             })
             ->editColumn('f_dob', function ($citizen) {
                 return convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
                     convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
                     convert_date_khmer((new Carbon($citizen->f_dob))->year);
             })
-
             ->editColumn('m_dob', function ($citizen) {
                 return convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
                     convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
                     convert_date_khmer((new Carbon($citizen->m_dob))->year);
             })
-
             ->editColumn('year', function ($citizen) {
                 return $citizen->year;
 
@@ -80,8 +79,8 @@ class CitizenController extends Controller
                                     <i class="fa fa-print"></i>
                                 </button>
                             </a>';
-                foreach (auth()->user()->roles as $role){
-                    if ($role->id == 1){
+                foreach (auth()->user()->roles as $role) {
+                    if ($role->id == 1) {
 
                         $action .= '<button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
                                 <input type="hidden" class="citizen_id" value="' . $citizen->id . '">
@@ -132,7 +131,7 @@ class CitizenController extends Controller
                     $newImage->imageable_id = $newCitzen->id;
                     $newImage->imageable_type = Citizen::class;
                     $destinationPath = public_path('img/backend/citizen');
-                    $filename = $index.time() . '' . '.' . $file->getClientOriginalExtension();
+                    $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
 
                     $file->move($destinationPath, $filename);
 
@@ -161,9 +160,9 @@ class CitizenController extends Controller
     {
         $citizen = Citizen::where('id', \request('citizen_id'))->first();
         $citizen_images = $citizen->images;
-        foreach ($citizen_images as $image){
+        foreach ($citizen_images as $image) {
             $image->delete();
-            unlink('img/backend/citizen/'.$image->image_src);
+            unlink('img/backend/citizen/' . $image->image_src);
         }
 
 
@@ -283,12 +282,11 @@ class CitizenController extends Controller
             $tmp_year = convert_khmer_day($citizen->year);
 
 
-
             $tmp_gender = Citizen::where('id', $citizen->id)->first()->gender_cityzen->gender_name;
 
 
-            $citizen_item = Citizen::where('id', $citizen->id)->select('number_list', 'number_book','lettertype_id', 'name', 'father_name', 'mother_name','date_birth', 'child_order','gender_id','year', 'place_birth'
-                , 'f_place_birth','f_dob', 'm_place_birth','m_dob', 'other')->first()->toArray();
+            $citizen_item = Citizen::where('id', $citizen->id)->select('number_list', 'number_book', 'lettertype_id', 'name', 'father_name', 'mother_name', 'date_birth', 'child_order', 'gender_id', 'year', 'place_birth'
+                , 'f_place_birth', 'f_dob', 'm_place_birth', 'm_dob', 'other')->first()->toArray();
 
             $citizen_tmp['លេខកូដឃុំ'] = $tmp;
             $citizen_tmp['លេខបញ្ជី'] = $citizen_item['number_list'];
@@ -307,8 +305,6 @@ class CitizenController extends Controller
             $citizen_tmp['ថ្ងៃខែឆ្នាំកំណើតម្ដាយ'] = $tmp_m_dob;
             $citizen_tmp['ទីកន្លែងកំណើតម្ដាយ'] = $citizen_item['m_place_birth'];
             $citizen_tmp['ព័ត៍មានផ្សេងៗ'] = $citizen_item['other'];
-
-
 
 
 //            $citizen_tmp['date_birth'] = $tmp_date_birth;
@@ -401,5 +397,23 @@ class CitizenController extends Controller
 
         return view('backend.Citizen.print_image', compact('images'));
 
+    }
+
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public function delete_image()
+    {
+
+        $image = Image::find((int)\request('id'));
+
+        if ($image instanceof Image) {
+            unlink(public_path('img/backend/citizen/' . $image->image_src));
+            $image->delete();
+            return ['status' => true];
+        }
+
+        return ['status' => false];
     }
 }

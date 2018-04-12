@@ -19,12 +19,12 @@
         /* Style the button and place it in the middle of the container/image */
         .citizen-image .btn {
             position: absolute;
-            top: 90%;
+            top: 6%;
             left: 90%;
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             border: none;
-            cursor: pointer;
+            border-radius: 0px;
         }
 
     </style>
@@ -98,76 +98,102 @@
                                         {{Form::text('mother_name', $citizen->mother_name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        <div class="row"  style="margin-inside: 0px;">
-                                            <div class="row"  style="margin-left: 0px;">
-                                                <div class="col-md-6">
-                                                    {{Form::label('date_birth', 'ថ្ងៃខែឆ្នាំកំណើត')}}
-                                                    <div class='input-group date' id='datetimepicker1'>
-                                                        <input class="form-control" name="date_birth" value="{{$citizen->date_birth}}"/>
-                                                        <span class="input-group-addon">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {{Form::label('date_birth', 'ថ្ងៃខែឆ្នាំកំណើត')}}
+                                                <div class='input-group date' id='datetimepicker1'>
+                                                    <input class="form-control" name="date_birth" value="{{$citizen->date_birth}}"/>
+                                                    <span class="input-group-addon">
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </span>
-                                                    </div>
-                                                    {{--{{Form::text('date_birth', $citizen->date_birth, ['class'=>'form-control datetimepicker1', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-format'=>'YYYY-MM-DD',''])}}--}}
-                                                    <div class="clearfix">&nbsp;</div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    {{Form::label('child_order', 'កូនទី')}}
-                                                    {{Form::text('child_order', $citizen->child_order, ['class'=>'form-control datetimepicker9', 'required', 'placeholder'=>'','data-dateformat'=>'yy/mm/dd'])}}
-                                                    <div class="clearfix">&nbsp;</div>
-                                                </div>
-                                                <div class="row" style="margin-left: 0px; float: left">
-                                                    <div class="col-md-6">
-                                                        {{Form::label('gender', 'ភេទ')}}
-                                                        <select name="gender" id="id" class="form-control">
-                                                            @foreach($genders as $gender)
-                                                                @if($gender->id == $citizen->id)
-                                                                    <option selected value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
-                                                                    @continue
-                                                                @endif
-                                                                <option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
+                                                {{--{{Form::text('date_birth', $citizen->date_birth, ['class'=>'form-control datetimepicker1', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-format'=>'YYYY-MM-DD',''])}}--}}
+                                                <div class="clearfix">&nbsp;</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{Form::label('child_order', 'កូនទី')}}
+                                                {{Form::text('child_order', $citizen->child_order, ['class'=>'form-control datetimepicker9', 'required', 'placeholder'=>'','data-dateformat'=>'yy/mm/dd'])}}
+                                                <div class="clearfix">&nbsp;</div>
+                                            </div>
+                                        </div>
 
-                                                    <div class="col-md-6">
-                                                        {{Form::label('year', 'ឆ្នាំ')}}
-                                                        <div class='input-group date' id='datetimepicker9'>
-                                                            <input type='text' class="form-control" name="year" value="{{ $citizen->year }}"/>
-                                                            <span class="input-group-addon">
+                                        <div class="row" style="float: left">
+                                            <div class="col-md-6">
+                                                {{Form::label('gender', 'ភេទ')}}
+                                                <select name="gender" id="id" class="form-control">
+                                                    @foreach($genders as $gender)
+                                                        @if($gender->id == $citizen->id)
+                                                            <option selected value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
+                                                            @continue
+                                                        @endif
+                                                        <option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                {{Form::label('year', 'ឆ្នាំ')}}
+                                                <div class='input-group date' id='datetimepicker9'>
+                                                    <input type='text' class="form-control" name="year" value="{{ $citizen->year }}"/>
+                                                    <span class="input-group-addon">
                                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                                 </span>
-                                                        </div>
-{{--                                                        {{Form::text('year', $citizen->year, ['class'=>'form-control datetimepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-format'=>'YYYY'])}}--}}
-                                                        <div class="clearfix">&nbsp;</div>
-                                                    </div>
                                                 </div>
+                                                {{--                                                        {{Form::text('year', $citizen->year, ['class'=>'form-control datetimepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-format'=>'YYYY'])}}--}}
+                                                <div class="clearfix">&nbsp;</div>
+                                            </div>
+                                        </div>
 
-                                                <div class="row">
-                                                    {{Form::label('image','រូបភាព')}}
-                                                    @if(isset($citizen->images) && count($citizen->images)>0)
-                                                        @foreach($citizen->images as $image)
-                                                            <div class=" col-md-6 citizen-image">
-                                                                <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt="image"/>
-                                                                <button class="btn btn-danger btn-sm delete-citizen-image"><i class="fa fa-trash"></i></button>
-                                                                {{Form::hidden('imageHidden', $image->id, array('class'=>'form-control col-md-3 citizen-image-id', 'name'=> 'citizen-image-id'))}}
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {{Form::label('f_dob', 'ថ្ងៃខែឆ្នាំកំណើតឪពុក')}}
+                                                <div class='input-group date' id='datetimepicker2'>
+                                                    <input class="form-control" name="f_dob" value="{{$citizen->f_dob}}" />
+                                                    <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
                                                 </div>
+                                            </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
-                                                        {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
-                                                    </div>
+                                            <div class="col-md-6">
+                                                {{Form::label('m_dob', 'ថ្ងៃខែឆ្នាំកំណើតម្ដាយ')}}
+                                                <div class='input-group date' id='datetimepicker3'>
+                                                    <input class="form-control" name="m_dob" value="{{$citizen->m_dob}}"/>
+                                                    <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{Form::label('image','រូបភាព')}}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            @if(isset($citizen->images) && count($citizen->images)>0)
+                                                @foreach($citizen->images as $image)
+                                                    <div class=" col-md-6 citizen-image">
+                                                        <img src="{{ asset('img/backend/citizen/'.$image->image_src)}} " alt=""/>
+                                                        <button class="btn btn-danger btn-xs delete-citizen-image"><i class="fa fa-times"></i></button>
+                                                        {{Form::hidden('imageHidden', $image->id, array('class'=>'form-control col-md-3 citizen-image-id', 'name'=> 'citizen-image-id'))}}
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
+                                                {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-
 
                                         {{Form::label('place_birth', 'ទីកន្លែងកំណើត')}}
                                         {{Form::textarea('place_birth', $citizen->place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត', 'id'=>'inputTextArea'])}}
@@ -244,8 +270,25 @@
                 format: 'YYYY'
             });
 
-            $(document).on("click", "delete-citizen-image", function(){
-                console.log($(this).siblings('.citizen-image-id').val())
+            $(document).on("click", ".delete-citizen-image", function(e){
+                e.preventDefault()
+                var id = $(this).siblings('.citizen-image-id').val();
+                console.log($(this).siblings('.citizen-image-id').val());
+                var temp = $(this);
+
+                $.ajax({
+                    type: "POST",
+                    url: '{{ route('admin.citizen.delete_image') }}',
+                    data: {
+                        id: id
+                    },
+                    success: function (response) {
+                        if(response.status == true){
+                            temp.parent().remove();
+                        }
+
+                    }
+                });
             })
         });
 
