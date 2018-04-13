@@ -122,7 +122,7 @@ class CitizenController extends Controller
         $newCitzen->updated_at = Carbon::now();
 
         if ($newCitzen->save()) {
-            dd($newCitzen);
+//            dd($newCitzen);
             if (\request()->hasFile('citizen_image')) {
 
 
@@ -202,8 +202,8 @@ class CitizenController extends Controller
             'date_birth' => $input['date_birth'],
             'child_order' => $input['child_order'],
             'gender_id' => $input['gender'],
-            'year' => $input['year'],
-//            'year' => $input(convert_khmer_day)['year'],
+//            'year' => $input['year'],
+            'year' => convert_khmer_day($input['year']),
             'place_birth' => $input['place_birth'],
             'f_place_birth' => $input['f_place_birth'],
             'f_dob' => $input['f_dob'],
@@ -211,33 +211,23 @@ class CitizenController extends Controller
             'm_dob' => $input['m_dob'],
             'other' => $input['other'],
         ));
-//        dd($citizen);
+
         if (\request()->hasFile('citizen_image')) {
-            $newImage = new Image();
 
-            $newImage->imageable_id = $id;
-            $newImage->imageable_type = Citizen::class;
-            $file = Input::file('citizen_image');
-//            foreach ($files as $file) {
-
+            $files = Input::file('citizen_image');
+            foreach ($files as $index => $file) {
+                $newImage = new Image();
+                $newImage->imageable_id = $id;
+                $newImage->imageable_type = Citizen::class;
                 $destinationPath = public_path('img/backend/citizen');
-
-
-                $filename = time() . '' . '.' . $file->getClientOriginalExtension();
+                $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
 
                 $file->move($destinationPath, $filename);
 
                 $newImage->image_src = $filename;
-
-//                $newImage->citizen_image[] = $filename;
-
-
                 $newImage->saveOrFail();
             }
-
-//            dd($newImage);
-
-
+        }
 
         if($citizen){
 

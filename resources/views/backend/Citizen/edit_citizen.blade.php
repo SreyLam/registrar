@@ -136,8 +136,8 @@
                                                 <div class='input-group date' id='datetimepicker9'>
                                                     <input type='text' class="form-control" name="year" value="{{ $citizen->year }}"/>
                                                     <span class="input-group-addon">
-                                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                                </span>
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
                                                 </div>
                                                 <div class="clearfix">&nbsp;</div>
                                             </div>
@@ -184,14 +184,9 @@
 
                                             @endif
                                                 <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
-                                                {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
+                                                {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image[]','multiple'])}}
                                         </div>
 
-                                        {{--<div class="row">--}}
-                                            {{--<div class="col-md-6">--}}
-                                                {{----}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
                                     </div>
 
                                     <div class="col-md-6">
