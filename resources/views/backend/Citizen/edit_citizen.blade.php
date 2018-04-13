@@ -139,7 +139,6 @@
                                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                                 </span>
                                                 </div>
-                                                {{--                                                        {{Form::text('year', $citizen->year, ['class'=>'form-control datetimepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-format'=>'YYYY'])}}--}}
                                                 <div class="clearfix">&nbsp;</div>
                                             </div>
                                         </div>
@@ -182,15 +181,17 @@
                                                         {{Form::hidden('imageHidden', $image->id, array('class'=>'form-control col-md-3 citizen-image-id', 'name'=> 'citizen-image-id'))}}
                                                     </div>
                                                 @endforeach
-                                            @endif
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                            @endif
                                                 <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
                                                 {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image'])}}
-                                            </div>
                                         </div>
+
+                                        {{--<div class="row">--}}
+                                            {{--<div class="col-md-6">--}}
+                                                {{----}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                     </div>
 
                                     <div class="col-md-6">
@@ -261,6 +262,14 @@
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker1').datetimepicker({
+                locale: 'km',
+                format: 'YYYY-MM-DD'
+            });
+            $('#datetimepicker2').datetimepicker({
+                locale: 'km',
+                format: 'YYYY-MM-DD'
+            });
+            $('#datetimepicker3').datetimepicker({
                 locale: 'km',
                 format: 'YYYY-MM-DD'
             });

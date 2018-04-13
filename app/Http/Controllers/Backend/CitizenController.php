@@ -99,6 +99,7 @@ class CitizenController extends Controller
     {
 
         $newCitzen = new Citizen();
+
         $newCitzen->commune_id = \request()->commune_id;
         $newCitzen->number_list = \request()->number_list;
         $newCitzen->number_book = \request()->number_book;
@@ -121,6 +122,7 @@ class CitizenController extends Controller
         $newCitzen->updated_at = Carbon::now();
 
         if ($newCitzen->save()) {
+            dd($newCitzen);
             if (\request()->hasFile('citizen_image')) {
 
 
@@ -201,6 +203,7 @@ class CitizenController extends Controller
             'child_order' => $input['child_order'],
             'gender_id' => $input['gender'],
             'year' => $input['year'],
+//            'year' => $input(convert_khmer_day)['year'],
             'place_birth' => $input['place_birth'],
             'f_place_birth' => $input['f_place_birth'],
             'f_dob' => $input['f_dob'],
@@ -208,14 +211,14 @@ class CitizenController extends Controller
             'm_dob' => $input['m_dob'],
             'other' => $input['other'],
         ));
-
+//        dd($citizen);
         if (\request()->hasFile('citizen_image')) {
             $newImage = new Image();
 
             $newImage->imageable_id = $id;
             $newImage->imageable_type = Citizen::class;
-            $files = Input::file('citizen_image');
-            foreach ($files as $file) {
+            $file = Input::file('citizen_image');
+//            foreach ($files as $file) {
 
                 $destinationPath = public_path('img/backend/citizen');
 
@@ -226,22 +229,22 @@ class CitizenController extends Controller
 
                 $newImage->image_src = $filename;
 
-                $newImage->citizen_image[] = $filename;
+//                $newImage->citizen_image[] = $filename;
 
 
                 $newImage->saveOrFail();
             }
 
 //            dd($newImage);
-        }
 
 
-//        if($citizen){
+
+        if($citizen){
 
         return Redirect::to('admin/citizen')->withSuccess('Update Successfully');
-//        }else{
-//            return Redirect::back()->withError('Update Unsuccessfully');
-//        }
+        }else{
+            return Redirect::back()->withError('Update Unsuccessfully');
+        }
     }
 
     public function getImport_citizen()
@@ -279,9 +282,7 @@ class CitizenController extends Controller
                 convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
                 convert_date_khmer((new Carbon($citizen->m_dob))->year);
 
-            $tmp_year = convert_khmer_day($citizen->year);
-
-
+//            $tmp_year = convert_khmer_day($citizen->year);
             $tmp_gender = Citizen::where('id', $citizen->id)->first()->gender_cityzen->gender_name;
 
 
