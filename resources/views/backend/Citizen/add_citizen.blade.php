@@ -59,11 +59,11 @@
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('father_name', 'ឈ្មេាះឪពុក')}}
-                                        {{Form::text('father_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឪពុក ', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('father_name', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឪពុក ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('mother_name', 'ឈ្មេាះម្ដាយ')}}
-                                        {{Form::text('mother_name', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ ', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('mother_name', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         <div class="row"  style="margin-inside: 0px;">
