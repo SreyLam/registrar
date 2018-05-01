@@ -183,7 +183,9 @@
                                                 @endforeach
 
                                             @endif
-                                                <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" />
+
+                                                <div class="clearfix">&nbsp;</div>
+                                                <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" style="margin-top: 10px; " />
                                                 {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image[]','multiple'])}}
                                         </div>
 

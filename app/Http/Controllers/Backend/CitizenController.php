@@ -309,9 +309,6 @@ class CitizenController extends Controller
             $excel->sheet('mySheet', function ($sheet) use ($data) {
 
                 $sheet->fromArray($data);
-                
-
-                dd($data);
             });
         })->download($type);
     }
