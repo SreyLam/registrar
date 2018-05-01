@@ -307,7 +307,11 @@ class CitizenController extends Controller
 
         return Excel::create('ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកូលដ្ខាន', function ($excel) use ($data) {
             $excel->sheet('mySheet', function ($sheet) use ($data) {
+
                 $sheet->fromArray($data);
+                
+
+                dd($data);
             });
         })->download($type);
     }

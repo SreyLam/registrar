@@ -146,7 +146,7 @@
 
 
                                         {{Form::label('place_birth', 'ទីកន្លែងកំណើត')}}
-                                        {{Form::textarea('place_birth', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត ', 'id'=>'inputTextArea'])}}
+                                        {{Form::textarea('place_birth', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត ', 'id'=>'inputTextArea'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('f_place_birth', 'ទីកន្លែងកំណើតឪពុក')}}
