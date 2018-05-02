@@ -91,11 +91,11 @@
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('father_name', 'ឈ្មេាះឪពុក')}}
-                                        {{Form::text('father_name', $citizen->father_name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូឈ្មេាះឪពុក !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('father_name', $citizen->father_name, ['class'=>'form-control','placeholder'=>'សូមបញ្ជូឈ្មេាះឪពុក !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('mother_name', 'ឈ្មេាះម្ដាយ')}}
-                                        {{Form::text('mother_name', $citizen->mother_name, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ !', 'id'=>'inputTextBox'])}}
+                                        {{Form::text('mother_name', $citizen->mother_name, ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ !', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         <div class="row">
@@ -194,19 +194,19 @@
                                     <div class="col-md-6">
 
                                         {{Form::label('place_birth', 'ទីកន្លែងកំណើត')}}
-                                        {{Form::textarea('place_birth', $citizen->place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត', 'id'=>'inputTextArea'])}}
+                                        {{Form::textarea('place_birth', $citizen->place_birth, ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើត', 'id'=>'inputTextArea'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('f_place_birth', 'ទីកន្លែងកំណើតឪពុក')}}
-                                        {{Form::textarea('f_place_birth', $citizen->f_place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតឪពុក', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('f_place_birth', $citizen->f_place_birth, ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតឪពុក', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('m_place_birth', 'ទីកន្លែងកំណើតម្ដាយ')}}
-                                        {{Form::textarea('m_place_birth', $citizen->m_place_birth, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតម្ដាយ', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('m_place_birth', $citizen->m_place_birth, ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលទីកន្លែងកំណើតម្ដាយ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
                                         {{Form::label('other', 'ព័ត៍មានផ្សេងៗ')}}
-                                        {{Form::textarea('other', $citizen->other, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលព័ត៏មានផ្សេងៗ ', 'id'=>'inputTextBox'])}}
+                                        {{Form::textarea('other', $citizen->other, ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលព័ត៏មានផ្សេងៗ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
                                     </div>
 

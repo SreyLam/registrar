@@ -342,10 +342,13 @@ class CitizenController extends Controller
 //dd($v);
                         $insert = [
                             'commune_id' => $commune->id,
-                            'number_list' => $v['number_list'],
+                            'number_list' =>convert_khmer_day($v['number_list']),
                             'number_book' => $v['number_book'],
                             'lettertype_id' => $lettertype->id,
-                            'year' => $v['year'],
+
+                            'year' => convert_khmer_day($v['year']),
+
+//                            'year' => $v['year'],
                             'name' => $v['name'],
                             'child_order' => $v['child_order'],
                             'gender_id' => $gender->id,
