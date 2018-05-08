@@ -28,13 +28,13 @@ class CreateCitizensTable extends Migration
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->dateTime('date_birth');
             $table->string('place_birth');
-            $table->string('father_name');
-            $table->string('f_place_birth');
-            $table->dateTime('f_dob');
-            $table->string('mother_name');
-            $table->string('m_place_birth');
-            $table->dateTime('m_dob');
-            $table->string('other');
+            $table->string('father_name')->nullable();
+            $table->string('f_place_birth')->nullable();
+            $table->dateTime('f_dob')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('m_place_birth')->nullable();
+            $table->dateTime('m_dob')->nullable();
+            $table->string('other')->nullable();
             $table->timestamps();
         });
     }

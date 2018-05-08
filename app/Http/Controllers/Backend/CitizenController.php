@@ -49,14 +49,26 @@ class CitizenController extends Controller
                 return $citizen->gender_cityzen->gender_name;
             })
             ->editColumn('date_birth', function ($citizen) {
-                return convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
-                    convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
-                    convert_date_khmer((new Carbon($citizen->date_birth))->year) . ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()) . 'ឆ្នាំ)</strong>';
+                if(!isNull($citizen->date_birth)){
+                    return '';
+                    return convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
+                        convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
+                        convert_date_khmer((new Carbon($citizen->date_birth))->year) . ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()) . 'ឆ្នាំ)</strong>';
+                }else {
+                    return '';
+                }
+
             })
             ->editColumn('f_dob', function ($citizen) {
-                return convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
-                    convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
-                    convert_date_khmer((new Carbon($citizen->f_dob))->year);
+                if(!isNull($citizen->f_dob)){
+                    return '';
+                    return convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
+                        convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
+                        convert_date_khmer((new Carbon($citizen->f_dob))->year);
+                }else {
+                    return '';
+                }
+
             })
             ->editColumn('m_dob', function ($citizen) {
                 return convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
