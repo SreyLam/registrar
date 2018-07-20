@@ -31,6 +31,7 @@
                                         <option value="{{ $commune->id }}">{{ $commune->name }}</option>
                                         @endforeach
                                         </select>
+                                        <div class="clearfix">&nbsp;</div>
                                         {{--{{Form::label('number', 'លេខឃុំ')}}--}}
                                         {{--{{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}--}}
                                         {{--<div class="clearfix">&nbsp;</div>--}}
@@ -49,6 +50,7 @@
                                                 <option value="{{ $letterype->id }}">{{ $letterype->name }}</option>
                                             @endforeach
                                         </select>
+                                        <div class="clearfix">&nbsp;</div>
 
                                         {{--{{Form::label('number', 'លេខប្រភេទសំបុត្រ')}}--}}
                                         {{--{{Form::text('number', '', ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}--}}
@@ -76,6 +78,7 @@
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </span>
                                                     </div>
+                                                    <div class="clearfix">&nbsp;</div>
                                                     {{--{{Form::text('date_birth', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'Pleas Enter your date_posted !','data-dateformat'=>'yy/mm/dd'])}}--}}
                                                     {{--<div class="clearfix">&nbsp;</div>--}}
                                                 </div>
@@ -92,18 +95,20 @@
                                                             <option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
                                                         @endforeach
                                                     </select>
+                                                    <div class="clearfix">&nbsp;</div>
 
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     {{Form::label('years', 'ឆ្នាំ')}}
 
-                                                        <div class='input-group date' id='datetimepicker9'>
-                                                            <input type='text' class="form-control" name="year"/>
-                                                                <span class="input-group-addon">
-                                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                                </span>
-                                                        </div>
+                                                    <div class='input-group date' id='datetimepicker9'>
+                                                        <input type='text' class="form-control" name="year"/>
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                    </div>
+                                                    <div class="clearfix">&nbsp;</div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     {{Form::label('f_dob', 'ថ្ងៃខែឆ្នាំកំណើតឪពុក')}}
@@ -113,6 +118,7 @@
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </span>
                                                     </div>
+                                                    <div class="clearfix">&nbsp;</div>
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -123,6 +129,7 @@
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </span>
                                                     </div>
+                                                    <div class="clearfix">&nbsp;</div>
                                                 </div>
 
 

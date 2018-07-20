@@ -343,13 +343,10 @@ class CitizenController extends Controller
                     $commune = Commune::where('number', $v['commune_number'])->first();
 
                     $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
-//                    dd($lettertype);
-//                    $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
-//                    dd($lettertype);
                     $gender = Gender::where('gender_name', $v['gender'])->first();
                     if (!empty($v)) {
-//dd($v);
-                        $insert = [
+//                        dd($v);
+                $insert = [
                             'commune_id' => $commune->id,
                             'number_list' =>convert_khmer_day($v['number_list']),
                             'number_book' => $v['number_book'],
@@ -373,7 +370,6 @@ class CitizenController extends Controller
                         ];
 
                     }
-//                    dd($insert);
 
                     if (!empty($insert)) {
                         Citizen::insert($insert);

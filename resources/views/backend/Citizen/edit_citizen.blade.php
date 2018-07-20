@@ -81,6 +81,7 @@
                                                 <option value="{{ $lettertype->id }}">{{ $lettertype->name }}</option>
                                             @endforeach
                                         </select>
+                                        <div class="clearfix">&nbsp;</div>
 
                                         {{--{{Form::label('lettertype_id', 'លេខប្រភេទសំបុត្រ')}}--}}
                                         {{--{{Form::text('lettertype_id', $citizen->lettertype_id, ['class'=>'form-control', 'required', 'placeholder'=>'សូមបញ្ជូលលេខឃុំ !', 'id'=>'inputTextBox'])}}--}}
@@ -162,6 +163,7 @@
                                                             <span class="glyphicon glyphicon-calendar"></span>
                                                         </span>
                                                 </div>
+                                                <div class="clearfix">&nbsp;</div>
                                             </div>
                                         </div>
 
@@ -185,7 +187,7 @@
                                             @endif
 
                                                 <div class="clearfix">&nbsp;</div>
-                                                <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" style="margin-top: 10px; " />
+                                                <img src="{{URL::to('/')}}/img/" alt="បន្ថែមរូបភាព" class="img-thumbnail" width="120px" height="20px" style="margin-top: 10px;margin-left: 10px " />
                                                 {{Form::file('image', ['class'=>'hiddenItem', 'id'=>'filechoose', 'style'=>'display:none;','name' => 'citizen_image[]','multiple'])}}
                                         </div>
 
