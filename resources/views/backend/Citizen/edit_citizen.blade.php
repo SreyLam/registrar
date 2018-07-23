@@ -118,7 +118,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row" style="float: left">
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 {{Form::label('gender', 'ភេទ')}}
                                                 <select name="gender" id="id" class="form-control">
@@ -132,16 +132,23 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                {{Form::label('year', 'ឆ្នាំ')}}
-                                                <div class='input-group date' id='datetimepicker9'>
-                                                    <input type='text' class="form-control" name="year" value="{{ $citizen->year }}"/>
-                                                    <span class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                        </span>
+                                                <div class="col-md-6">
+                                                    {{Form::label('year', 'ឆ្នាំ')}}
+                                                    {{Form::text('year', $citizen->year, ['class'=>'form-control datetimepicker9', 'required', 'placeholder'=>'','data-dateformat'=>'yy/mm/dd'])}}
+                                                    <div class="clearfix">&nbsp;</div>
                                                 </div>
-                                                <div class="clearfix">&nbsp;</div>
-                                            </div>
+
+
+                                            {{--<div class="col-md-6">--}}
+                                                {{--{{Form::label('year', 'ឆ្នាំ')}}--}}
+                                                {{--<div class='input-group date' id='datetimepicker9'>--}}
+                                                    {{--<input type='text' class="form-control" name="year" value="{{ $citizen->year }}"/>--}}
+                                                    {{--<span class="input-group-addon">--}}
+                                                            {{--<span class="glyphicon glyphicon-calendar"></span>--}}
+                                                        {{--</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="clearfix">&nbsp;</div>--}}
+                                            {{--</div>--}}
                                         </div>
 
                                         <div class="row">

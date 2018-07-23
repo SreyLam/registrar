@@ -112,8 +112,8 @@ class CitizenController extends Controller
         $newCitzen->date_birth = \request()->date_birth;
         $newCitzen->child_order = \request()->child_order;
         $newCitzen->gender_id = \request()->gender;
-//        $newCitzen->year = \request()->year;
-        $newCitzen->year = convert_khmer_day(\request()->year);
+        $newCitzen->year = \request()->year;
+//        $newCitzen->year = convert_khmer_day(\request()->year);
         $newCitzen->place_birth = \request()->place_birth;
         $newCitzen->f_place_birth = \request()->f_place_birth;
         $newCitzen->f_dob = \request()->f_dob;
@@ -204,8 +204,8 @@ class CitizenController extends Controller
             'date_birth' => $input['date_birth'],
             'child_order' => $input['child_order'],
             'gender_id' => $input['gender'],
-//            'year' => $input['year'],
-            'year' => convert_khmer_day($input['year']),
+            'year' => $input['year'],
+//            'year' => convert_khmer_day($input['year']),
             'place_birth' => $input['place_birth'],
             'f_place_birth' => $input['f_place_birth'],
             'f_dob' => $input['f_dob'],
@@ -351,10 +351,8 @@ class CitizenController extends Controller
                             'number_list' =>convert_khmer_day($v['number_list']),
                             'number_book' => $v['number_book'],
                             'lettertype_id' => $lettertype->id,
-
-                            'year' => convert_khmer_day($v['year']),
-
-//                            'year' => $v['year'],
+//                            'year' => convert_khmer_day($v['year']),
+                            'year' => $v['year'],
                             'name' => $v['name'],
                             'child_order' => $v['child_order'],
                             'gender_id' => $gender->id,

@@ -98,18 +98,22 @@
                                                     <div class="clearfix">&nbsp;</div>
 
                                                 </div>
-
                                                 <div class="col-md-6">
-                                                    {{Form::label('years', 'ឆ្នាំ')}}
-
-                                                    <div class='input-group date' id='datetimepicker9'>
-                                                        <input type='text' class="form-control" name="year"/>
-                                                            <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                            </span>
-                                                    </div>
-                                                    <div class="clearfix">&nbsp;</div>
+                                                    {{Form::label('year', 'ឆ្នាំ')}}
+                                                    {{Form::text('year', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឆ្នាំដែលអ្នកធ្វើនៅឆ្នាំណា', 'id'=>'inputTextBox'])}}
+                                                <div class="clearfix">&nbsp;</div>
                                                 </div>
+                                                {{--<div class="col-md-6">--}}
+                                                    {{--{{Form::label('years', 'ឆ្នាំ')}}--}}
+
+                                                    {{--<div class='input-group date' id='datetimepicker9'>--}}
+                                                        {{--<input type='text' class="form-control" name="year"/>--}}
+                                                            {{--<span class="input-group-addon">--}}
+                                                                {{--<span class="glyphicon glyphicon-calendar"></span>--}}
+                                                            {{--</span>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="clearfix">&nbsp;</div>--}}
+                                                {{--</div>--}}
                                                 <div class="col-md-6">
                                                     {{Form::label('f_dob', 'ថ្ងៃខែឆ្នាំកំណើតឪពុក')}}
                                                     <div class='input-group date' id='datetimepicker2'>
