@@ -189,53 +189,49 @@ class CitizenController extends Controller
 
     public function postStore_citizen($id)
     {
+        try {
+            $input = Input::all();
 
-        $input = Input::all();
-        //update into database
+            $citizen = DB::table('citizens')->where('id', $id)->update(array(
+                'commune_id' => $input['commune_id'],
+                'number_list' => $input['number_list'],
+                'number_book' => $input['number_book'],
+                'lettertype_id' => $input['lettertype_id'],
+                'name' => $input['name'],
+                'father_name' => $input['father_name'],
+                'mother_name' => $input['mother_name'],
+                'date_birth' => $input['date_birth'],
+                'child_order' => $input['child_order'],
+                'gender_id' => $input['gender'],
+                'year' => $input['year'],
+                // 'year' => convert_khmer_day($input['year']),
+                'place_birth' => $input['place_birth'],
+                'f_place_birth' => $input['f_place_birth'],
+                'f_dob' => ($input['f_dob'] == '' ? null : $input['f_dob']),
+                'm_place_birth' => $input['m_place_birth'],
+                'm_dob' => ($input['m_dob'] == '' ? null : $input['m_dob']),
+                'other' => $input['other'],
+            ));
 
-        $citizen = DB::table('citizens')->where('id', $id)->update(array(
-            'commune_id' => $input['commune_id'],
-            'number_list' => $input['number_list'],
-            'number_book' => $input['number_book'],
-            'lettertype_id' => $input['lettertype_id'],
-            'name' => $input['name'],
-            'father_name' => $input['father_name'],
-            'mother_name' => $input['mother_name'],
-            'date_birth' => $input['date_birth'],
-            'child_order' => $input['child_order'],
-            'gender_id' => $input['gender'],
-            'year' => $input['year'],
-//            'year' => convert_khmer_day($input['year']),
-            'place_birth' => $input['place_birth'],
-            'f_place_birth' => $input['f_place_birth'],
-            'f_dob' => $input['f_dob'],
-            'm_place_birth' => $input['m_place_birth'],
-            'm_dob' => $input['m_dob'],
-            'other' => $input['other'],
-        ));
+            if (\request()->hasFile('citizen_image')) {
 
-        if (\request()->hasFile('citizen_image')) {
+                $files = Input::file('citizen_image');
+                foreach ($files as $index => $file) {
+                    $newImage = new Image();
+                    $newImage->imageable_id = $id;
+                    $newImage->imageable_type = Citizen::class;
+                    $destinationPath = public_path('img/backend/citizen');
+                    $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
 
-            $files = Input::file('citizen_image');
-            foreach ($files as $index => $file) {
-                $newImage = new Image();
-                $newImage->imageable_id = $id;
-                $newImage->imageable_type = Citizen::class;
-                $destinationPath = public_path('img/backend/citizen');
-                $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
+                    $file->move($destinationPath, $filename);
 
-                $file->move($destinationPath, $filename);
-
-                $newImage->image_src = $filename;
-                $newImage->saveOrFail();
+                    $newImage->image_src = $filename;
+                    $newImage->saveOrFail();
+                }
             }
-        }
-
-        if($citizen){
-
-        return Redirect::to('admin/citizen')->withSuccess('Update Successfully');
-        }else{
-            return Redirect::back()->withError('Update Unsuccessfully');
+            return Redirect::to('admin/citizen')->withFlashSuccess('Update Successfully');
+        } catch (\Exception $exception) {
+            return Redirect::back()->withFlashError($exception->getMessage());
         }
     }
 
@@ -265,17 +261,17 @@ class CitizenController extends Controller
                 convert_date_khmer((new Carbon($citizen->date_birth))->year);
 
 
-            if($citizen->f_dob == null){
+            if ($citizen->f_dob == null) {
                 $tmp_f_dob = '';
-            }else {
+            } else {
                 $tmp_f_dob = convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
                     convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
                     convert_date_khmer((new Carbon($citizen->f_dob))->year);
             }
 
-            if($citizen->m_dob == null){
+            if ($citizen->m_dob == null) {
                 $tmp_m_dob = '';
-            }else {
+            } else {
                 $tmp_m_dob = convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
                     convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
                     convert_date_khmer((new Carbon($citizen->m_dob))->year);
@@ -346,15 +342,15 @@ class CitizenController extends Controller
                     $gender = Gender::where('gender_name', $v['gender'])->first();
                     if (!empty($v)) {
 //                        dd($v);
-                $insert = [
+                        $insert = [
                             'commune_id' => $commune->id,
-                            'number_list' =>convert_khmer_day($v['number_list']),
-                            'number_book' => $v['number_book'],
+                            'number_list' => convert_khmer_day($v['number_list']),
+                            'number_book' => convert_khmer_day($v['number_book']),
                             'lettertype_id' => $lettertype->id,
-//                            'year' => convert_khmer_day($v['year']),
-                            'year' => $v['year'],
+                            'year' => convert_khmer_day($v['year']),
+//                            'year' => $v['year'],
                             'name' => $v['name'],
-                            'child_order' => $v['child_order'],
+                            'child_order' => convert_khmer_day($v['child_order']),
                             'gender_id' => $gender->id,
                             'date_birth' => $v['date_birth'],
                             'place_birth' => $v['place_birth'],

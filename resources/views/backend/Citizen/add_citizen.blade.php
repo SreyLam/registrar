@@ -88,6 +88,7 @@
                                                     {{Form::text('child_order', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'សូមបញ្ជូលលំដាប់កូន','data-dateformat'=>'yy/mm/dd'])}}
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
+
                                                 <div class="col-md-6">
                                                     <label>ភេទ</label>
                                                     <select name="gender" id="id" class="form-control">
