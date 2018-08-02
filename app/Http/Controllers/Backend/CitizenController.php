@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -35,44 +36,44 @@ class CitizenController extends Controller
 
     public function getCitizenDatatable()
     {
+        try {
+            $citizens = Citizen::select('*')->with('commune', 'lettertype', 'gender_cityzen');
 
-        $citizens = Citizen::select('*')->with('commune', 'lettertype', 'gender_cityzen')->get();
+            return Datatables::of($citizens)
+                ->addColumn('commune', function ($citizen) {
+                    return $citizen->commune->number;
+                })
+                ->addColumn('lettertype', function ($citizen) {
+                    return $citizen->lettertype->number;
+                })
+                ->addColumn('gender', function ($citizen) {
+                    return $citizen->gender_cityzen->gender_name;
+                })
+                ->editColumn('date_birth', function ($citizen) {
+                    return convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
+                        convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
+                        convert_date_khmer((new Carbon($citizen->date_birth))->year) . ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()) . 'ឆ្នាំ)</strong>';
 
-        return Datatables::of($citizens)
-            ->addColumn('commune', function ($citizen) {
-                return $citizen->commune->number;
-            })
-            ->addColumn('lettertype', function ($citizen) {
-                return $citizen->lettertype->number;
-            })
-            ->addColumn('gender', function ($citizen) {
-                return $citizen->gender_cityzen->gender_name;
-            })
-            ->editColumn('date_birth', function ($citizen) {
-                return convert_date_khmer((new Carbon($citizen->date_birth))->day) . ' ' .
-                    convert_khmer_month((new Carbon($citizen->date_birth))->month) . ' ' .
-                    convert_date_khmer((new Carbon($citizen->date_birth))->year) . ' <strong>(' . convert_khmer_day((new Carbon($citizen->date_birth))->diffInYears()) . 'ឆ្នាំ)</strong>';
+                })
+                ->editColumn('f_dob', function ($citizen) {
+                    return convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
+                        convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
+                        convert_date_khmer((new Carbon($citizen->f_dob))->year);
 
-            })
-            ->editColumn('f_dob', function ($citizen) {
-                return convert_date_khmer((new Carbon($citizen->f_dob))->day) . ' ' .
-                    convert_khmer_month((new Carbon($citizen->f_dob))->month) . ' ' .
-                    convert_date_khmer((new Carbon($citizen->f_dob))->year);
+                })
+                ->editColumn('m_dob', function ($citizen) {
+                    return convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
+                        convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
+                        convert_date_khmer((new Carbon($citizen->m_dob))->year);
+                })
+                ->editColumn('year', function ($citizen) {
+                    return $citizen->year;
 
-            })
-            ->editColumn('m_dob', function ($citizen) {
-                return convert_date_khmer((new Carbon($citizen->m_dob))->day) . ' ' .
-                    convert_khmer_month((new Carbon($citizen->m_dob))->month) . ' ' .
-                    convert_date_khmer((new Carbon($citizen->m_dob))->year);
-            })
-            ->editColumn('year', function ($citizen) {
-                return $citizen->year;
-
-            })
-            ->addColumn('actions', function ($citizen) {
+                })
+                ->addColumn('actions', function ($citizen) {
 
 
-                $action = '<a href="/admin/citizens/' . $citizen->id . '/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
+                    $action = '<a href="/admin/citizens/' . $citizen->id . '/edit_citizen"><button type="button" class="btn btn-xs btn-success" aria-label="Left Align">
                                     <span class="fa fa-pencil" aria-hidden="true"></span>
                                 </button>
                             </a>
@@ -81,20 +82,23 @@ class CitizenController extends Controller
                                     <i class="fa fa-print"></i>
                                 </button>
                             </a>';
-                foreach (auth()->user()->roles as $role) {
-                    if ($role->id == 1) {
+                    foreach (auth()->user()->roles as $role) {
+                        if ($role->id == 1) {
 
-                        $action .= '<button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
+                            $action .= '<button type="button" class="btn btn-xs btn-danger delete-citizen" aria-label="Left Align">
                                 <input type="hidden" class="citizen_id" value="' . $citizen->id . '">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                             </button>';
 
+                        }
                     }
-                }
 
-                return $action;
+                    return $action;
 
-            })->make(true);
+                })->make(true);
+        } catch (\Exception $exception) {
+            return $exception->getMessage();
+        }
     }
 
     public function storeCitizen()
@@ -321,68 +325,64 @@ class CitizenController extends Controller
 
     public function importExcel(Request $request)
     {
+        try {
+            if ($request->hasFile('import_file')) {
 
-        if ($request->hasFile('import_file')) {
+                $file = $request->file('import_file');
 
-            $file = $request->file('import_file');
+                $results = null;
 
-            $results = null;
-
-            $data = Excel::load($file, function () {
-            })->get();
+                $data = Excel::load($file, function () {
+                })->get();
 
 
-            if (!empty($data)) {
+                if (!empty($data)) {
 
-                foreach ($data->toArray() as $key => $v) {
+                    foreach ($data->toArray() as $key => $v) {
 
-                    $commune = Commune::where('number', $v['commune_number'])->first();
+                        $commune = Commune::where('number', $v['commune_number'])->first();
 
-                    $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
-                    $gender = Gender::where('gender_name', $v['gender'])->first();
-                    if (!empty($v)) {
-//                        dd($v);
-                        $insert = [
-                            'commune_id' => $commune->id,
-                            'number_list' => convert_khmer_day($v['number_list']),
-                            'number_book' => convert_khmer_day($v['number_book']),
-                            'lettertype_id' => $lettertype->id,
-                            'year' => convert_khmer_day($v['year']),
-//                            'year' => $v['year'],
-                            'name' => $v['name'],
-                            'child_order' => convert_khmer_day($v['child_order']),
-                            'gender_id' => $gender->id,
-                            'date_birth' => $v['date_birth'],
-                            'place_birth' => $v['place_birth'],
-                            'father_name' => $v['father_name'],
-                            'f_dob' => $v['f_dob'],
-                            'f_place_birth' => $v['f_place_birth'],
-                            'mother_name' => $v['mother_name'],
-                            'm_dob' => $v['m_dob'],
-                            'm_place_birth' => $v['m_place_birth'],
-                            'other' => $v['other']
-                        ];
-
+                        $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
+                        $gender = Gender::where('gender_name', $v['gender'])->first();
+                        if (!empty($v)) {
+                            $insert = [
+                                'commune_id' => $commune->id,
+                                'number_list' => convert_khmer_day($v['number_list']),
+                                'number_book' => convert_khmer_day($v['number_book']),
+                                'lettertype_id' => $lettertype->id,
+                                'year' => convert_khmer_day($v['year']),
+                                // 'year' => $v['year'],
+                                'name' => $v['name'],
+                                'child_order' => convert_khmer_day($v['child_order']),
+                                'gender_id' => $gender->id,
+                                'date_birth' => $v['date_birth'],
+                                'place_birth' => $v['place_birth'],
+                                'father_name' => $v['father_name'],
+                                'f_dob' => $v['f_dob'],
+                                'f_place_birth' => $v['f_place_birth'],
+                                'mother_name' => $v['mother_name'],
+                                'm_dob' => $v['m_dob'],
+                                'm_place_birth' => $v['m_place_birth'],
+                                'other' => $v['other']
+                            ];
+                            $citizens = Citizen::orWhere($insert)->get();
+                            if (count($citizens) == 0) {
+                                Citizen::insert($insert);
+                            }
+                        }
                     }
 
-                    if (!empty($insert)) {
-                        Citizen::insert($insert);
-
-                    }
+                    return Redirect::to('admin/citizen')->with('success', 'Insert Record successfully.');
                 }
 
-                return Redirect::to('admin/citizen')->with('success', 'Insert Record successfully.');
-
+            } else {
 
             }
 
-
-        } else {
-
+            return back()->with('error', 'Please Check your file, Something is wrong there.');
+        } catch (\Exception $exception) {
+            dd($exception->getMessage());
         }
-
-
-        return back()->with('error', 'Please Check your file, Something is wrong there.');
     }
 
     public function getPrint_image($id)
