@@ -36,30 +36,30 @@
                     {{--<span>{{ trans('menus.backend.sidebar.dashboard') }}</span>--}}
                 {{--</a>--}}
             {{--</li>--}}
-            <li class="{{ Active::pattern('admin/commune') }}">
-                <a href="{{ route('admin.commune') }}">
-                    <i class="fa fa-dashboard"></i>
-                    គ្រប់គ្រងឃុំសង្កាត់
-                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
-                </a>
-            </li>
             <li class="{{ Active::pattern('admin/citizen') }}">
                 <a href="{{ route('admin.citizen') }}">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-book"></i>
                     គ្រប់គ្រងអត្រានុកូលដ្ឋាន
                     {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
                 </a>
             </li>
             <li class="{{ Active::pattern('admin/lettertype') }}">
                 <a href="{{ route('admin.lettertype') }}">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-paper-plane-o"></i>
                     គ្រប់គ្រងប្រភេទសំបុត្រ
+                    {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
+                </a>
+            </li>
+            <li class="{{ Active::pattern('admin/commune') }}">
+                <a href="{{ route('admin.commune') }}">
+                    <i class="fa fa-map-marker"></i>
+                    គ្រប់គ្រងឃុំសង្កាត់
                     {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
                 </a>
             </li>
             <li class="{{ Active::pattern('admin/gender') }}">
                 <a href="{{ route('admin.gender') }}">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-transgender"></i>
                     គ្រប់គ្រងភេទ
                     {{--<span>{{ trans('menus.backend.sidebar.Commune.list_commune') }}</span>--}}
                 </a>

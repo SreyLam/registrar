@@ -101,7 +101,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     {{Form::label('year', 'ឆ្នាំ')}}
-                                                    {{Form::text('year', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឆ្នាំដែលអ្នកធ្វើនៅឆ្នាំណា', 'id'=>'inputTextBox'])}}
+                                                    {{Form::text('year', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឆ្នាំដែលអ្នកធ្វើនៅឆ្នាំ', 'id'=>'inputTextBox'])}}
                                                 <div class="clearfix">&nbsp;</div>
                                                 </div>
                                                 {{--<div class="col-md-6">--}}

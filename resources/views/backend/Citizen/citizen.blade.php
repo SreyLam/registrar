@@ -51,6 +51,7 @@
                 <div class="table-responsive">
                     <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
                         <thead>
+                        <th>លេខរៀង</th>
                         <th>លេខកូដឃុំ</th>
                         <th>លេខបញ្ជី</th>
                         <th>លេខសៀវភៅ</th>
@@ -99,6 +100,7 @@
                     data: {status: 1, trashed: false}
                 },
                 columns: [
+                    {data: 'id', name: 'id'},
                     {data: 'commune', name: 'commune.number'},
                     {data: 'number_list', name: 'number_list'},
                     {data: 'number_book', name: 'number_book'},
