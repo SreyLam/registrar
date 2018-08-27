@@ -68,8 +68,7 @@
                                         {{Form::text('mother_name', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឈ្មេាះម្ដាយ ', 'id'=>'inputTextBox'])}}
                                         <div class="clearfix">&nbsp;</div>
 
-                                        <div class="row"  style="margin-inside: 0px;">
-                                            <div class="row"  style="margin-left: 0px;">
+                                            <div class="row">
                                                 <div class="col-md-6">
                                                     {{Form::label('date_birth', 'ថ្ងៃខែឆ្នាំកំណើត')}}
                                                     <div class='input-group date' id='datetimepicker1'>
@@ -88,6 +87,8 @@
                                                     {{Form::text('child_order', '', ['class'=>'form-control datepicker', 'required', 'placeholder'=>'សូមបញ្ជូលលំដាប់កូន','data-dateformat'=>'yy/mm/dd'])}}
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
+                                            </div>
+                                            <div class="row">
 
                                                 <div class="col-md-6">
                                                     <label>ភេទ</label>
@@ -102,8 +103,9 @@
                                                 <div class="col-md-6">
                                                     {{Form::label('year', 'ឆ្នាំ')}}
                                                     {{Form::text('year', '', ['class'=>'form-control', 'placeholder'=>'សូមបញ្ជូលឆ្នាំដែលអ្នកធ្វើនៅឆ្នាំ', 'id'=>'inputTextBox'])}}
-                                                <div class="clearfix">&nbsp;</div>
+                                                    <div class="clearfix">&nbsp;</div>
                                                 </div>
+                                            </div>
                                                 {{--<div class="col-md-6">--}}
                                                     {{--{{Form::label('years', 'ឆ្នាំ')}}--}}
 
@@ -115,6 +117,7 @@
                                                     {{--</div>--}}
                                                     {{--<div class="clearfix">&nbsp;</div>--}}
                                                 {{--</div>--}}
+                                            <div class="row">
                                                 <div class="col-md-6">
                                                     {{Form::label('f_dob', 'ថ្ងៃខែឆ្នាំកំណើតឪពុក')}}
                                                     <div class='input-group date' id='datetimepicker2'>
@@ -137,7 +140,7 @@
                                                     <div class="clearfix">&nbsp;</div>
                                                 </div>
 
-
+                                            </div>
                                                 <div class=" col-md-6">
                                                     {{Form::label('image','បញ្ជូលរូបភាព')}}
 
@@ -149,9 +152,6 @@
 
                                                 </div>
 
-
-                                            </div>
-                                        </div>
                                     </div>
 
                                         <div class="col-md-6">

@@ -141,11 +141,9 @@ class CitizenController extends Controller
                     $destinationPath = public_path('img/backend/citizen');
                     $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
 
-                    $file->move($destinationPath, $filename);
+                    $file->move($destinationPath, $filename)->resize(200, 200);
 
                     $newImage->image_src = $filename;
-//                    $newImage->citizen_image[] = $filename;
-                    //dd($newImage);
 
                     $newImage->save();
                 }
@@ -217,7 +215,9 @@ class CitizenController extends Controller
                 'other' => $input['other'],
             ));
 
+
             if (\request()->hasFile('citizen_image')) {
+
 
                 $files = Input::file('citizen_image');
                 foreach ($files as $index => $file) {
