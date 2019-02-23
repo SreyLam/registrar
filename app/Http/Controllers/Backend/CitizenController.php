@@ -37,7 +37,7 @@ class CitizenController extends Controller
     public function getCitizenDatatable()
     {
         try {
-            $citizens = Citizen::select('*')->with('commune', 'lettertype', 'gender_cityzen');
+            $citizens = Citizen::select('*')->with('commune', 'lettertype', 'gender_cityzen')->orderBy('created_at', 'desc');
 
             return Datatables::of($citizens)
                 ->addColumn('commune', function ($citizen) {
@@ -141,7 +141,7 @@ class CitizenController extends Controller
                     $destinationPath = public_path('img/backend/citizen');
                     $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
 
-                    $file->move($destinationPath, $filename)->resize(200, 200);
+                    $file->move($destinationPath, $filename);
 
                     $newImage->image_src = $filename;
 
@@ -345,6 +345,7 @@ class CitizenController extends Controller
                         $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
                         $gender = Gender::where('gender_name', $v['gender'])->first();
                         if (!empty($v)) {
+
                             $insert = [
                                 'commune_id' => $commune->id,
                                 'number_list' => convert_khmer_day($v['number_list']),
@@ -363,10 +364,13 @@ class CitizenController extends Controller
                                 'mother_name' => $v['mother_name'],
                                 'm_dob' => $v['m_dob'],
                                 'm_place_birth' => $v['m_place_birth'],
-                                'other' => $v['other']
+                                'other' => $v['other'],
                             ];
+
                             $citizens = Citizen::orWhere($insert)->get();
                             if (count($citizens) == 0) {
+                                $insert['created_at'] = Carbon::now();
+                                dump($insert);
                                 Citizen::insert($insert);
                             }
                         }
