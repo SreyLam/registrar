@@ -54,7 +54,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     @yield('page-header')
-
+                    {{--<img src="{{url('img/giphy.gif')}}">--}}
                     {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
                     {!! Breadcrumbs::renderIfExists() !!}
                 </section>
@@ -62,9 +62,21 @@
                 <!-- Main content -->
                 <section class="content">
                     @include('includes.partials.messages')
-                    <div style="line-height: 1.5em; font-weight: bold; font-size: 1.5em; width: 100%;">
-                        <marquee>សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកូលដ្ឋាន</marquee>
-                        {{--សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកូលដ្ឋាន--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <img src="{{url('img/giphy.gif')}}" style="height: 80px; width: 100%;">
+                            </div>
+                            <div class="col-md-8" style="line-height: 2em; font-weight: bold; font-size: 2em;">
+                                <marquee>សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកូលដ្ឋាន</marquee>
+                                {{--សូមស្វាគមន៏ប្រព័ន្ធគ្រប់គ្រងស្ថិតិអត្រានុកូលដ្ឋាន--}}
+
+                            </div>
+                            <div class="col-md-2">
+                                <img src="{{url('img/giphy.gif')}}" style="height: 80px; width: 100%;">
+                            </div>
+
+                        </div>
                     </div>
                     @yield('content')
                 </section><!-- /.content -->

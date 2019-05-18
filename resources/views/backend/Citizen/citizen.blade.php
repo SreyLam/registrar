@@ -13,7 +13,6 @@
             <div class="box-tools pull-right">
                 <div class="pull-right mb-10 hidden-sm hidden-xs">
 
-
                     <a href="{{ url('admin/import_citizen') }}"
                        class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> បញ្ជូលទិន្ន័យ​​តាម​ Excel or CSV</a>
 
@@ -63,12 +62,12 @@
                         <th style="width: 20%">ថ្ងៃខែឆ្នាំកំណើត</th>
                         <th>ទីកន្លែងកំណើត</th>
                         <th>ឈ្មេាះឪពុក</th>
-                        {{--<th>ថ្ងៃខែឆ្នាំកំណើតឪពុក</th>--}}
-                        {{--<th>ទីកន្លែងកំណើតឪពុក</th>--}}
+                        <th>ថ្ងៃខែឆ្នាំកំណើតឪពុក</th>
+                        <th>ទីកន្លែងកំណើតឪពុក</th>
                         <th>ឈ្មេាះម្ដាយ</th>
-                        {{--<th>ថ្ងៃខែឆ្នាំកំណើតម្ដាយ</th>--}}
-                        {{--<th>ព័ត៍មានផ្សេងៗ</th>--}}
-                        {{--<th>រូបភាព</th>--}}
+                        <th>ថ្ងៃខែឆ្នាំកំណើតម្ដាយ</th>
+                        <th>ព័ត៍មានផ្សេងៗ</th>
+                        <th>រូបភាព</th>
                         <th>សកម្មភាព</th>
                         </thead>
 
@@ -113,12 +112,12 @@
                     {data: 'date_birth', name: 'date_birth', searchable: false, sortable: false},
                     {data: 'place_birth', name: 'place_birth', sortable: false},
                     {data: 'father_name', name: 'father_name', searchable: false, sortable: false},
-//                    {data: 'f_dob', name: 'f_dob'},
-//                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
+                    {data: 'f_dob', name: 'f_dob', searchable: false, sortable: false},
+                    {data: 'f_place_birth', name: 'f_place_birth', sortable: false},
                     {data: 'mother_name', name: 'mother_name', searchable: false, sortable: false},
-//                    {data: 'm_dob', name: 'm_dob'},
-//                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
-//                    {data: 'other', name: 'other', sortable: false},
+                    {data: 'm_dob', name: 'm_dob', searchable: false, sortable: false},
+                    {data: 'm_place_birth', name: 'm_place_birth', sortable: false},
+                    {data: 'other', name: 'other', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

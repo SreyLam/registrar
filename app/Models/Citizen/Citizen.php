@@ -10,8 +10,23 @@ class Citizen extends Model
 {
 
 
-    public $fillable = ['commune_id','number_list','number_book','lettertype_id','name','father_name','mother_name','date_birth'
-        ,'child_order','gender','year','place_birth','f_place_birth','m_place_birth','m_place_birth','other'];
+    public $fillable = [
+        'commune_id',
+        'number_list',
+        'number_book',
+        'lettertype_id',
+        'name',
+        'father_name',
+        'mother_name',
+        'date_birth',
+        'child_order',
+        'gender_id',
+        'year',
+        'place_birth',
+        'f_place_birth',
+        'm_place_birth',
+        'm_place_birth',
+        'other'];
 
     public function commune()
     {

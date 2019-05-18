@@ -104,39 +104,41 @@ class CitizenController extends Controller
     public function storeCitizen()
     {
 
-        $newCitzen = new Citizen();
 
-        $newCitzen->commune_id = \request()->commune_id;
-        $newCitzen->number_list = \request()->number_list;
-        $newCitzen->number_book = \request()->number_book;
-        $newCitzen->lettertype_id = \request()->lettertype_id;
-        $newCitzen->name = \request()->name;
-        $newCitzen->father_name = \request()->father_name;
-        $newCitzen->mother_name = \request()->mother_name;
-        $newCitzen->date_birth = \request()->date_birth;
-        $newCitzen->child_order = \request()->child_order;
-        $newCitzen->gender_id = \request()->gender;
-        $newCitzen->year = \request()->year;
+        $newCitzen['commune_id'] = \request()->commune_id;
+        $newCitzen['number_list'] = \request()->number_list;
+        $newCitzen['number_book'] = \request()->number_book;
+        $newCitzen['lettertype_id'] = \request()->lettertype_id;
+        $newCitzen['name'] = \request()->name;
+        $newCitzen['father_name'] = \request()->father_name;
+        $newCitzen['mother_name'] = \request()->mother_name;
+        $newCitzen['date_birth'] = \request()->date_birth;
+        $newCitzen['child_order'] = \request()->child_order;
+        $newCitzen['gender_id'] = (int)\request()->gender;
+        $newCitzen['year'] = \request()->year;
 //        $newCitzen->year = convert_khmer_day(\request()->year);
-        $newCitzen->place_birth = \request()->place_birth;
-        $newCitzen->f_place_birth = \request()->f_place_birth;
-        $newCitzen->f_dob = \request()->f_dob;
-        $newCitzen->m_place_birth = \request()->m_place_birth;
-        $newCitzen->m_dob = \request()->m_dob;
-        $newCitzen->other = \request()->other;
-        $newCitzen->created_at = Carbon::now();
-        $newCitzen->updated_at = Carbon::now();
+        $newCitzen['place_birth'] = \request()->place_birth;
+        $newCitzen['f_place_birth'] = \request()->f_place_birth;
+        $newCitzen['f_dob'] = \request()->f_dob;
+        $newCitzen['m_place_birth'] = \request()->m_place_birth;
+        $newCitzen['m_dob'] = \request()->m_dob;
+        $newCitzen['other'] = \request()->other;
 
-        if ($newCitzen->save()) {
+        $citizens = Citizen::orWhere($newCitzen)->get();
+
+        if (count($citizens) == 0) {
+
 //            dd($newCitzen);
+            Citizen::create($newCitzen);
+            $latestCitizen = Citizen::latest()->first();
+
             if (\request()->hasFile('citizen_image')) {
 
-
                 $files = Input::file('citizen_image');
-//                dd($files);
+
                 foreach ($files as $index => $file) {
                     $newImage = new Image();
-                    $newImage->imageable_id = $newCitzen->id;
+                    $newImage->imageable_id = $latestCitizen->id;
                     $newImage->imageable_type = Citizen::class;
                     $destinationPath = public_path('img/backend/citizen');
                     $filename = $index . time() . '' . '.' . $file->getClientOriginalExtension();
@@ -148,7 +150,10 @@ class CitizenController extends Controller
                     $newImage->save();
                 }
             }
+        } else {
+            return Redirect::back()->withFlashError('This record already exist.');
         }
+
 
         return redirect('/admin/citizen');
 
@@ -337,15 +342,16 @@ class CitizenController extends Controller
 
 
                 if (!empty($data)) {
-
+                    $exist = 0;
                     foreach ($data->toArray() as $key => $v) {
 
                         $commune = Commune::where('number', $v['commune_number'])->first();
 
                         $lettertype = Lettertype::where('number', $v['lettertype_number'])->first();
                         $gender = Gender::where('gender_name', $v['gender'])->first();
-                        if (!empty($v)) {
+                        if (!empty($v) && $lettertype !== null && $gender !== null) {
 
+//                            dd($v);
                             $insert = [
                                 'commune_id' => $commune->id,
                                 'number_list' => convert_khmer_day($v['number_list']),
@@ -366,26 +372,30 @@ class CitizenController extends Controller
                                 'm_place_birth' => $v['m_place_birth'],
                                 'other' => $v['other'],
                             ];
-
                             $citizens = Citizen::orWhere($insert)->get();
                             if (count($citizens) == 0) {
                                 $insert['created_at'] = Carbon::now();
-                                dump($insert);
                                 Citizen::insert($insert);
+                            }else {
+                                $exist++;
                             }
                         }
                     }
 
-                    return Redirect::to('admin/citizen')->with('success', 'Insert Record successfully.');
+                    if ($exist == 0) {
+                        return Redirect::to('admin/citizen')->with('success', 'Insert Record successfully.');
+                    } else {
+                        return \redirect()->back();
+                    }
                 }
 
             } else {
-
+                return \redirect()->back();
             }
 
             return back()->with('error', 'Please Check your file, Something is wrong there.');
         } catch (\Exception $exception) {
-            dd($exception->getMessage());
+            ($exception->getMessage());
         }
     }
 
